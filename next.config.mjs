@@ -11,12 +11,12 @@ try {
   }
 }
 
+const isProd = process.env.NODE_ENV === 'production';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/SINIJINI',
-  assetPrefix: '/SINIJINI',
-  
+  basePath: isProd ? '/SINIJINI' : '',
+  assetPrefix: isProd ? '/SINIJINI' : '',
   images: {
     unoptimized: true,
   },

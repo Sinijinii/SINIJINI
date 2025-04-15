@@ -8,13 +8,13 @@
 }
 
 .dark {
-  --background: 222 47% 11%;
+  --background: 0 47% 11%;
   --foreground: 0 0% 98%;
 }
 
 body {
   color: rgb(var(--foreground));
-  background: rgb(var(--background));
+  background: #ffffff;
   font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
   overflow-x: hidden; /* 가로 스크롤 방지 */
   width: 100%;

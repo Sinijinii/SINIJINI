@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Mail, MessageSquare, ArrowUp, Code, Database, Brain } from "lucide-react"
 import Image from "next/image"
-
+import ProjectFilter from "@/components/projectfilter"
 
 // 기존 import 구문 아래에 추가
 import IntegratedProjectCard from "@/components/integrated-project-card"
@@ -14,9 +14,13 @@ import IntegratedProjectCard from "@/components/integrated-project-card"
 import AboutTestimonials from "@/components/about-testimonials"
 import NavigationMenu from "@/components/navigation-menu"
 
+
+
+
 export default function Home() {
   const [activeSection, setActiveSection] = useState("intro")
   const [showScrollTop, setShowScrollTop] = useState(false)
+  const [activeProjectFilter, setActiveProjectFilter] = useState("all")
   const containerRef = useRef(null)
 
   // 스크롤 위치에 따라 활성 섹션 업데이트
@@ -48,7 +52,7 @@ export default function Home() {
   }
 
   // 각 직무 타이틀
-  const roles = ["Front-End", "AI", "Backend"]
+  const roles = ["AI", "Front-End", "Backend"]
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0)
 
   // 타이틀 자동 변경
@@ -58,6 +62,102 @@ export default function Home() {
     }, 3000)
     return () => clearInterval(interval)
   }, [roles.length])
+
+
+  // 프로젝트 데이터
+  const projects = [
+    {
+      id: "gangwon-travel",
+      title: "모두의 취향을 고려한 강원도 여행 코스 추천 서비스",
+      description: "개인과 그룹의 여행 성향을 분석하여 최적화된 강원도 여행 코스를 추천하는 서비스입니다.",
+      image: "/project/maumkkut/main.png?height=300&width=500",
+      frontendTech: [],
+      backendTech: ["Django REST Framework", "MySQL", "Kakao Maps API"],
+      aiTech: ["K-평균 클러스터링", "Cosine Similarity", "경로 최적화 알고리즘"],
+      categories: ["backend", "ai"],
+    },
+    {
+      id: "sign-language-translator",
+      title: "손누리: 웹서핑이 힘든 청각장애인들을 위한 한국어-수어 통역 서비스",
+      description:
+        "청각장애인의 웹 서비스 접근성을 개선하기 위해 실시간 한국어-수어 번역과 자연스러운 수어 영상을 제공하는 서비스입니다.",
+      image: "/project/sonuri/main.png?height=300&width=500",
+      frontendTech: ["React", "CSS3", "HTML5"],
+      backendTech: [],
+      aiTech: ["GPT", "형태소 분석기", "벡터 데이터베이스", "Semantic Search"],
+      categories: ["frontend", "ai"],
+    },
+    {
+      id: "zoozoo-fin",
+      title: "주주핀 ZooZooFin - 금융 교육 게임 앱",
+      description:
+        "금융 지식이 부족한 사용자가 육성형 게임을 통해 자산 관리와 투자 전략을 재미있고 효과적으로 배울 수 있는 핀테크 게임 앱 서비스입니다.",
+      image: "/project/zoozoofin/main.png?height=300&width=500",
+      frontendTech: ["React.js", "Recharts", "CSS Modules"],
+      backendTech: ["Node.js", "Express", "MongoDB"],
+      aiTech: ["LSTM", "KR-FinBERT-SC", "주가 패턴 예측"],
+      categories: ["frontend", "ai"],
+    },
+    {
+      id: "clothes-memory",
+      title: "기웃기옷 - 옷 기억도 분석 서비스",
+      description:
+        "사용자가 입으려는 옷이 주변 사람들에게 얼마나 기억에 남는지 분석하고, 더 나은 스타일 선택을 지원하는 서비스입니다.",
+      image: "/project/giutgiot/main.png?height=300&width=500",
+      frontendTech: ["Flutter", "OAuth", "Chart library"],
+      backendTech: [],
+      aiTech: ["CNN-LSTM", "Pyannote", "SVM", "이미지 인식"],
+      categories: ["frontend", "ai"],  // 백엔드, AI에서 프론트엔드, AI로 수정
+    },
+    {
+      id: "ott-movie-recommender",
+      title: "OTT 정보 및 커뮤니티 기반 영화 추천 서비스",
+      description: "OTT별 영화 정보를 제공하고, 코사인 유사도 기반 추천, CNN 닮은꼴 배우 추천, 생성형 AI 포스터 제작을 결합한 영화 추천 커뮤니티 플랫폼입니다.",
+      image: "/project/motis/main.png?height=300&width=500",
+      frontendTech: ["Flutter", "OAuth", "Chart library"],
+      backendTech: [],
+      aiTech: ["Tensorflow", "Django", "Pandas", "NumPy", "OpenCV", "Cosine Similarity", "CNN"],
+      categories: ["frontend", "ai", "backend"],  // 백엔드, AI에서 프론트엔드, AI로 수정
+    },
+    {
+      id: "assembly-motion-recognition",
+      title: "멀티모달 딥러닝 기반 작업자 동작 인식 시스템",
+      description: "센서 데이터와 영상 데이터를 융합한 멀티모달 딥러닝으로 작업자 동작 인식 및 패턴 분석을 수행하는 시스템입니다.",
+      image: "/project/cn1/main.png?height=300&width=500",
+      frontendTech: ["Android Studio", "Flutter", "BLE"],
+      backendTech: [],
+      aiTech: ["CNN", "LSTM", "PrefixSpan", "TensorFlow"],
+      categories: ["frontend", "ai"],
+    },
+    {
+      id: "posture-recognition-app",
+      title: "멀티모달 딥러닝 기반 실시간 자세 인식 앱",
+      description: "핸드폰 센서와 영상 데이터를 융합하여 사용자의 자세를 93.65% 정확도로 인식하고, RabbitMQ 서버를 통해 실시간으로 데이터를 전송하는 Flutter 기반 앱입니다.",
+      image: "/project/cn2/main.png?height=300&width=500",
+      frontendTech: ["Flutter", "Dart", "RabbitMQ", "Firebase"],
+      backendTech: [],
+      aiTech: ["3D CNN", "LSTM", "1D CNN", "TensorFlow"],
+      categories: ["frontend", "ai"],
+    },
+    {
+      id: "infant-health-monitoring",
+      title: "영유아 스마트 밴드 데이터 기반 건강 분석 및 웹 보고서",
+      description: "스마트 밴드로 수집한 영유아 활동 데이터를 K-means와 Z-Score 기반으로 분석하고, 맞춤형 권장 운동량을 제공하는 웹 보고서 서비스입니다.",
+      image: "/project/kids/main.png?height=300&width=500",
+      frontendTech: ["Django", "HTML/CSS", "JavaScript", "Chart.js"],
+      backendTech: [],
+      aiTech: ["K-Means", "Z-Score", "Scikit-learn", "Pandas"],
+      categories: ["frontend", "ai"],
+    }
+  ]
+  
+
+  // 필터링된 프로젝트
+  const filteredProjects =
+  activeProjectFilter === "all"
+    ? projects
+    : projects.filter((project) => project.categories.includes(activeProjectFilter))
+
 
   return (
     <div className="relative bg-white text-gray-800">
@@ -105,7 +205,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* About 섹션 */}
+      {/* About 섹션 (Interview 섹션과 통합) - 사진 추가 */}
       <section id="about" className="min-h-screen py-20 section-bg-alt">
         <div className="container mx-auto px-4">
           <motion.h2
@@ -118,157 +218,158 @@ export default function Home() {
             About me
           </motion.h2>
 
-          <div className="flex flex-col items-center justify-center gap-12 md:flex-row md:items-start">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="flex-shrink-0"
-            >
-              <div className="relative h-64 w-64 overflow-hidden rounded-full">
-                <Image
-                  src="/placeholder.svg?height=256&width=256"
-                  alt="Profile"
-                  width={256}
-                  height={256}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="mt-6 flex justify-center gap-4">
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-md bg-gray-800 px-4 py-2 text-sm text-white transition-colors hover:bg-gray-700"
-                >
-                  GitHub
-                </a>
-                <a
-                  href="https://velog.io"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-md bg-gray-800 px-4 py-2 text-sm text-white transition-colors hover:bg-gray-700"
-                >
-                  Velog
-                </a>
-              </div>
-            </motion.div>
+          <div className="mx-auto max-w-6xl">
+            {/* About 내용 - 사진과 텍스트 나란히 배치 */}
+            <div className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2">
+              {/* 왼쪽: 프로필 사진 */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="flex flex-col items-center justify-center"
+              >
+                <div className="relative h-80 w-80 overflow-hidden rounded-full border-4 border-white shadow-lg">
+                  <Image src="/profile.jpg" alt="신희진" fill className="w-full h-full object-cover object-top" />
+                </div>
+                <div className="mt-6 flex justify-center gap-4">
+                  <a
+                    href="https://github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-md bg-gray-800 px-4 py-2 text-sm text-white transition-colors hover:bg-gray-700"
+                  >
+                    GitHub
+                  </a>
+                  <a
+                    href="https://velog.io"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-md bg-gray-800 px-4 py-2 text-sm text-white transition-colors hover:bg-gray-700"
+                  >
+                    Velog
+                  </a>
+                </div>
+              </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="max-w-2xl space-y-6 text-gray-600"
-            >
-              <p>
-                안녕하세요, <span className="gradient-text font-medium">프론트엔드, 백엔드, AI 개발</span> 경험을 두루
-                갖춘 풀스택 개발자입니다. 다양한 영역에서의 개발 경험을 통해 종합적인 시각으로 문제를 해결합니다.
-              </p>
-              <p>
-                <strong>사용자 중심의 서비스</strong>를 개발하는 것을 목표로, 최신 기술 트렌드를 학습하고 적용하여
-                효율적이고 직관적인 서비스를 구현합니다. 특히 프론트엔드와 AI를 결합한 지능형 사용자 인터페이스에 관심이
-                많습니다.
-              </p>
-              <p>
-                <strong>기술 통합의 중요성</strong>을 이해하고, 프론트엔드, 백엔드, AI 기술을 유기적으로 연결하여
-                사용자에게 더 나은 경험을 제공하는 서비스를 만들고자 합니다.
-              </p>
-              <div className="flex flex-wrap gap-2 pt-4">
-                <span className="rounded-full bg-gray-200 px-3 py-1 text-sm text-gray-700">#열정적인</span>
-                <span className="rounded-full bg-gray-200 px-3 py-1 text-sm text-gray-700">#매니악한</span>
-                <span className="rounded-full bg-gray-200 px-3 py-1 text-sm text-gray-700">#끈기백점</span>
-                <span className="rounded-full bg-gray-200 px-3 py-1 text-sm text-gray-700">#꾸준히는 매일</span>
-              </div>
-              
-              {/* About 섹션에 팀원 리뷰 추가 */}
-              <div className="pt-4">
-                {/* 팀원 리뷰 컴포넌트 */}
-                <AboutTestimonials />
-              </div>
+              {/* 오른쪽: 텍스트 내용 */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7, delay: 0.4 }}
+                className="space-y-6 text-gray-600"
+              >
+                <p className="text-lg">
+                  안녕하세요, <span className="gradient-text font-medium"> AI 개발, 프론트엔드, 백엔드</span> 경험을 두루
+                  갖춘 풀스택 개발자입니다. 다양한 영역에서의 개발 경험을 통해 종합적인 시각으로 문제를 해결합니다.
+                </p>
+                <p className="text-lg">
+                  <strong>사용자 중심의 서비스</strong>를 개발하는 것을 목표로, 최신 기술 트렌드를 학습하고 적용하여
+                  효율적이고 직관적인 서비스를 구현합니다. 특히 프론트엔드와 AI를 결합한 지능형 사용자 인터페이스에
+                  관심이 많습니다.
+                </p>
+                <p className="text-lg">
+                  <strong>기술 통합의 중요성</strong>을 이해하고, 프론트엔드, 백엔드, AI 기술을 유기적으로 연결하여
+                  사용자에게 더 나은 경험을 제공하는 서비스를 만들고자 합니다.
+                </p>
+                <div className="flex flex-wrap gap-2 pt-4">
+                  <span className="rounded-full bg-gray-200 px-3 py-1 text-sm text-gray-700">#열정적인</span>
+                  <span className="rounded-full bg-gray-200 px-3 py-1 text-sm text-gray-700">#긍정적인</span>
+                  <span className="rounded-full bg-gray-200 px-3 py-1 text-sm text-gray-700">#빅데이터분석기사</span>
+                  <span className="rounded-full bg-gray-200 px-3 py-1 text-sm text-gray-700">#정보처리기사</span>
+                </div>
+              </motion.div>
+            </div>
 
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Interview 섹션 */}
-      <section id="interview" className="min-h-screen py-20">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
-            className="mb-16 text-4xl font-light md:text-5xl"
-          >
-            Interview
-          </motion.h2>
-
-          <div className="mx-auto max-w-3xl space-y-12">
+            {/* 팀원 리뷰 컴포넌트 */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="rounded-xl bg-white p-8 shadow-sm border border-gray-100"
-            >
-              <h3 className="mb-4 text-xl font-medium">Q. 다양한 개발 영역에 관심을 갖게 된 계기는?</h3>
-              <p className="text-gray-600">
-                처음에는 프론트엔드 개발로 시작했지만, 사용자에게 더 나은 경험을 제공하기 위해서는 백엔드와의 효율적인
-                통신과 데이터 처리가 중요하다는 것을 깨달았습니다.
-              </p>
-              <p className="mt-2 text-gray-600">
-                이후 <strong className="text-gray-800">AI 기술이 사용자 경험을 혁신적으로 변화</strong>시킬 수 있다는
-                가능성에 매료되어, 세 영역을 모두 학습하게 되었습니다. 각 영역의 지식이 서로 시너지를 내며 더 완성도
-                높은 서비스를 만들 수 있다고 믿습니다.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="rounded-xl bg-white p-8 shadow-sm border border-gray-100"
-            >
-              <h3 className="mb-4 text-xl font-medium">Q. 세 가지 영역을 어떻게 통합하여 개발하나요?</h3>
-              <p className="text-gray-600">
-                <strong className="text-gray-800">사용자 중심의 설계</strong>를 기반으로, 프론트엔드에서는 직관적인
-                UI/UX를 구현하고, 백엔드에서는 안정적이고 확장 가능한 API를 설계합니다.
-              </p>
-              <p className="mt-2 text-gray-600">
-                여기에 AI 기술을 접목하여 사용자 데이터를 분석하고 개인화된 경험을 제공합니다. 예를 들어, 사용자의 행동
-                패턴을 분석하여 UI를 자동으로 최적화하거나, 콘텐츠 추천 시스템을 구현하는 방식으로 세 영역을 유기적으로
-                연결합니다.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, delay: 0.6 }}
-              className="rounded-xl bg-white p-8 shadow-sm border border-gray-100"
+              className="mb-16"
             >
-              <h3 className="mb-4 text-xl font-medium">Q. 개발자로서 가장 중요하게 생각하는 가치는?</h3>
-              <p className="text-gray-600">
-                <strong className="text-gray-800">기술의 경계를 넘어선 통합적 사고</strong>가 가장 중요하다고
-                생각합니다. 단일 기술에 국한되지 않고 다양한 기술을 연결하여 문제를 해결하는 능력이 현대 개발자에게
-                필수적입니다.
-              </p>
-              <p className="mt-2 text-gray-600">
-                또한, <strong className="text-gray-800">사용자 공감 능력</strong>을 바탕으로 기술이 실제 사람들의 삶에
-                어떤 가치를 제공할 수 있는지 항상 고민합니다. 기술은 결국 사람을 위한 것이라는 철학을 바탕으로 개발에
-                임하고 있습니다.
-              </p>
+              <AboutTestimonials />
             </motion.div>
+
+            {/* Interview 섹션 내용 - 가로 배치로 변경 */}
+            <div className="mb-12">
+              <motion.h3
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7 }}
+                className="mb-8 text-2xl font-medium"
+              >
+                Interview
+              </motion.h3>
+
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.7, delay: 0.1 }}
+                  className="rounded-xl bg-white p-6 shadow-sm border border-gray-100 h-full"
+                >
+                  <h4 className="mb-3 text-lg font-medium">Q. 다양한 개발 영역에 관심을 갖게 된 계기는?</h4>
+                  <p className="text-gray-600">
+                    처음에는 프론트엔드 개발로 시작했지만, 사용자에게 더 나은 경험을 제공하기 위해서는 백엔드와의
+                    효율적인 통신과 데이터 처리가 중요하다는 것을 깨달았습니다.
+                  </p>
+                  <p className="mt-2 text-gray-600">
+                    이후 <strong className="text-gray-800">AI 기술이 사용자 경험을 혁신적으로 변화</strong>시킬 수
+                    있다는 가능성에 매료되어, 세 영역을 모두 학습하게 되었습니다.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.7, delay: 0.2 }}
+                  className="rounded-xl bg-white p-6 shadow-sm border border-gray-100 h-full"
+                >
+                  <h4 className="mb-3 text-lg font-medium">Q. 세 가지 영역을 어떻게 통합하여 개발하나요?</h4>
+                  <p className="text-gray-600">
+                    <strong className="text-gray-800">사용자 중심의 설계</strong>를 기반으로, 프론트엔드에서는 직관적인
+                    UI/UX를 구현하고, 백엔드에서는 안정적이고 확장 가능한 API를 설계합니다.
+                  </p>
+                  <p className="mt-2 text-gray-600">
+                    여기에 AI 기술을 접목하여 사용자 데이터를 분석하고 개인화된 경험을 제공합니다. 이렇게 세 영역을
+                    유기적으로 연결합니다.
+                  </p>
+                </motion.div>
+
+                {/* <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.7, delay: 0.3 }}
+                  className="rounded-xl bg-white p-6 shadow-sm border border-gray-100 h-full md:col-span-2"
+                >
+                  <h4 className="mb-3 text-lg font-medium">Q. 개발자로서 가장 중요하게 생각하는 가치는?</h4>
+                  <p className="text-gray-600">
+                    <strong className="text-gray-800">기술의 경계를 넘어선 통합적 사고</strong>가 가장 중요하다고
+                    생각합니다. 단일 기술에 국한되지 않고 다양한 기술을 연결하여 문제를 해결하는 능력이 현대 개발자에게
+                    필수적입니다.
+                  </p>
+                  <p className="mt-2 text-gray-600">
+                    또한, <strong className="text-gray-800">사용자 공감 능력</strong>을 바탕으로 기술이 실제 사람들의
+                    삶에 어떤 가치를 제공할 수 있는지 항상 고민합니다. 기술은 결국 사람을 위한 것이라는 철학을 바탕으로
+                    개발에 임하고 있습니다.
+                  </p>
+                </motion.div> */}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
+
       {/* 기술 통합 섹션 */}
-      <section id="tech-integration" className="min-h-screen py-20 section-bg-alt">
+      <section id="tech-integration" className="min-h-screen py-20">
         <div className="container mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
@@ -283,6 +384,12 @@ export default function Home() {
           <div className="mx-auto max-w-5xl">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               <TechIntegrationCard
+                icon={<Brain className="h-12 w-12 text-purple-500" />}
+                title="AI / ML"
+                description="데이터 기반 의사결정과 지능형 기능을 구현합니다. 사용자 행동 분석, 추천 시스템, 자연어 처리 등을 통해 서비스를 고도화합니다."
+                skills={["TensorFlow", "PyTorch", "NLP", "데이터 분석"]}
+              />
+              <TechIntegrationCard
                 icon={<Code className="h-12 w-12 text-blue-500" />}
                 title="Front-End"
                 description="사용자와 직접 상호작용하는 인터페이스를 구현합니다. React, Vue, TypeScript를 활용하여 반응형 UI와 최적화된 사용자 경험을 제공합니다."
@@ -296,12 +403,6 @@ export default function Home() {
                 skills={["Node.js", "Django", "MySQL", "MongoDB"]}
               />
 
-              <TechIntegrationCard
-                icon={<Brain className="h-12 w-12 text-purple-500" />}
-                title="AI / ML"
-                description="데이터 기반 의사결정과 지능형 기능을 구현합니다. 사용자 행동 분석, 추천 시스템, 자연어 처리 등을 통해 서비스를 고도화합니다."
-                skills={["TensorFlow", "PyTorch", "NLP", "데이터 분석"]}
-              />
             </div>
 
             <motion.div
@@ -313,7 +414,6 @@ export default function Home() {
             >
               <h3 className="mb-6 text-2xl font-medium text-center">통합 개발 프로세스</h3>
               <div className="relative">
-                <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 transform bg-gray-200"></div>
                 <div className="space-y-12">
                   <ProcessStep
                     number="01"
@@ -346,8 +446,9 @@ export default function Home() {
       </section>
 
       {/* Skills 섹션 */}
-      <section id="skills" className="min-h-screen py-20">
+      <section id="skills" className="min-h-screen py-20 section-bg-alt">
         <div className="container mx-auto px-4">
+    
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -359,6 +460,23 @@ export default function Home() {
           </motion.h2>
 
           <div className="mx-auto max-w-4xl">
+
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: 0.6 }}
+            >
+              <h3 className="mb-8 text-2xl font-light">AI / ML</h3>
+              <div className="mb-16 flex flex-wrap justify-center gap-6">
+                <SkillIcon name="TensorFlow" icon="/Skills/Tensor.png?height=60&width=60" />
+                <SkillIcon name="PyTorch" icon="/Skills/Pytorch.png?height=60&width=60" />
+                <SkillIcon name="Scikit-learn" icon="/Skills/Scikit.png?height=60&width=60" />
+                <SkillIcon name="HuggingFace" icon="/Skills/hugging.png?height=60&width=60" />
+                <SkillIcon name="LangChain" icon="/Skills/langchain.jpeg?height=60&width=60" />
+              </div>
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -367,12 +485,13 @@ export default function Home() {
             >
               <h3 className="mb-8 text-2xl font-light">FrontEnd</h3>
               <div className="mb-16 flex flex-wrap justify-center gap-6">
-                <SkillIcon name="HTML" icon="/placeholder.svg?height=60&width=60" />
-                <SkillIcon name="CSS" icon="/placeholder.svg?height=60&width=60" />
-                <SkillIcon name="JavaScript" icon="/placeholder.svg?height=60&width=60" />
-                <SkillIcon name="React" icon="/placeholder.svg?height=60&width=60" />
-                <SkillIcon name="Vue" icon="/placeholder.svg?height=60&width=60" />
-                <SkillIcon name="TypeScript" icon="/placeholder.svg?height=60&width=60" />
+                <SkillIcon name="HTML" icon="/Skills/HTML.png?height=350&width=350" />
+                <SkillIcon name="CSS" icon="/Skills/CSS.png?height=60&width=60" />
+                <SkillIcon name="JavaScript" icon="/Skills/JavaScript.png?height=60&width=60" />
+                <SkillIcon name="TypeScript" icon="/Skills/TypeScript.png?height=60&width=60" />
+                <SkillIcon name="React" icon="/Skills/React.png?height=60&width=60" />
+                <SkillIcon name="Vue" icon="/Skills/Vue.png?height=60&width=60" />
+                
               </div>
             </motion.div>
 
@@ -384,25 +503,11 @@ export default function Home() {
             >
               <h3 className="mb-8 text-2xl font-light">Backend</h3>
               <div className="mb-16 flex flex-wrap justify-center gap-6">
-                <SkillIcon name="Python" icon="/placeholder.svg?height=60&width=60" />
-                <SkillIcon name="Django" icon="/placeholder.svg?height=60&width=60" />
-                <SkillIcon name="Node.js" icon="/placeholder.svg?height=60&width=60" />
-                <SkillIcon name="Express" icon="/placeholder.svg?height=60&width=60" />
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.6 }}
-            >
-              <h3 className="mb-8 text-2xl font-light">AI / ML</h3>
-              <div className="mb-16 flex flex-wrap justify-center gap-6">
-                <SkillIcon name="TensorFlow" icon="/placeholder.svg?height=60&width=60" />
-                <SkillIcon name="PyTorch" icon="/placeholder.svg?height=60&width=60" />
-                <SkillIcon name="Scikit-learn" icon="/placeholder.svg?height=60&width=60" />
-                <SkillIcon name="Pandas" icon="/placeholder.svg?height=60&width=60" />
+                <SkillIcon name="Python" icon="/Skills/Python.jpeg?height=60&width=60" />
+                <SkillIcon name="Django" icon="/Skills/Django.png?height=60&width=60" />
+                <SkillIcon name="FastAPI" icon="/Skills/Fastapi.png?height=60&width=60" />
+                <SkillIcon name="Flask" icon="/Skills/Flask.png?height=60&width=60" />
+                <SkillIcon name="Spring" icon="/Skills/spring.png?height=60&width=60" />
               </div>
             </motion.div>
 
@@ -414,11 +519,11 @@ export default function Home() {
             >
               <h3 className="mb-8 text-2xl font-light">Tools</h3>
               <div className="flex flex-wrap justify-center gap-6">
-                <SkillIcon name="Git" icon="/placeholder.svg?height=60&width=60" />
-                <SkillIcon name="GitHub" icon="/placeholder.svg?height=60&width=60" />
-                <SkillIcon name="Figma" icon="/placeholder.svg?height=60&width=60" />
-                <SkillIcon name="VS Code" icon="/placeholder.svg?height=60&width=60" />
-                <SkillIcon name="Docker" icon="/placeholder.svg?height=60&width=60" />
+                <SkillIcon name="Git" icon="/Skills/Git.png?height=60&width=60" />
+                <SkillIcon name="GitHub" icon="/Skills/Github.jpeg?height=60&width=60" />
+                <SkillIcon name="JIRA" icon="/Skills/Jira.jpeg?height=60&width=60" />
+                <SkillIcon name="Figma" icon="/Skills/Figma.jpeg?height=60&width=60" />
+                {/* <SkillIcon name="Docker" icon="/Skills/Tensor.png?height=60&width=60" /> */}
               </div>
             </motion.div>
           </div>
@@ -426,79 +531,48 @@ export default function Home() {
       </section>
 
       {/* Projects 섹션 */}
-      <section id="projects" className="min-h-screen py-20 section-bg-alt">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
-            className="mb-16 text-4xl font-light md:text-5xl"
-          >
-            통합 프로젝트
-          </motion.h2>
+      <section id="projects" className="min-h-screen py-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="mx-auto max-w-3xl text-center text-gray-600 mb-12"
+            >
+            </motion.p>
 
-          <div className="mx-auto max-w-6xl">
-            <div className="mb-12">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="mx-auto max-w-3xl text-center text-gray-600 mb-12"
-              >
-                프론트엔드, 백엔드, AI 기술을 유기적으로 결합하여 개발한 프로젝트들입니다. 각 영역의 기술이 어떻게
-                시너지를 내며 사용자 경험을 향상시키는지 확인해보세요.
-              </motion.p>
-            </div>
+            {/* 프로젝트 필터 추가 */}
+            <ProjectFilter activeFilter={activeProjectFilter} setActiveFilter={setActiveProjectFilter} />
+          </div>
 
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
+          {/* 그리드 변경: 여유있게 나열, 모바일에서 1열, md에서 2열, xl에서 3열로 변경하고 간격 늘림 */}
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
+            {filteredProjects.map((project) => (
               <IntegratedProjectCard
-                projectId="gangwon-travel"
-                title="모두의 취향을 고려한 강원도 여행 코스 추천 서비스"
-                description="개인과 그룹의 여행 성향을 분석하여 최적화된 강원도 여행 코스를 추천하는 서비스입니다."
-                image="/placeholder.svg?height=300&width=500"
-                frontendTech={["React", "Redux", "Styled Components"]}
-                backendTech={["Django REST Framework", "MySQL"]}
-                aiTech={["K-평균 클러스터링", "Cosine Similarity", "경로 최적화 알고리즘"]}
+                key={project.id}
+                projectId={project.id}
+                title={project.title}
+                description={project.description}
+                image={project.image}
+                frontendTech={project.frontendTech}
+                backendTech={project.backendTech}
+                aiTech={project.aiTech}
               />
+            ))}
 
-              <IntegratedProjectCard
-                projectId="sign-language"
-                title="웹서핑이 힘든 청각장애인들을 위한 한국어-수어 통역 서비스"
-                description="청각장애인의 웹 서비스 접근성을 개선하기 위해 실시간 한국어-수어 번역과 자연스러운 수어 영상을 제공하는 서비스입니다."
-                image="/placeholder.svg?height=300&width=500"
-                frontendTech={["Next.js", "Framer Motion", "WebRTC"]}
-                backendTech={["FastAPI", "Redis", "PostgreSQL"]}
-                aiTech={["GPT", "형태소 분석기", "벡터 데이터베이스"]}
-              />
-
-              <IntegratedProjectCard
-                projectId="zoozoofin"
-                title="주주핀 ZooZooFin - 핀테크 게임 앱 서비스"
-                description="금융 지식이 부족한 사용자가 육성형 게임을 통해 자산 관리와 투자 전략을 재미있고 효과적으로 배울 수 있는 핀테크 게임 앱 서비스입니다."
-                image="/placeholder.svg?height=300&width=500"
-                frontendTech={["React Native", "Redux", "D3.js"]}
-                backendTech={["Node.js", "Express", "MongoDB"]}
-                aiTech={["LSTM", "감정 분석", "주가 패턴 예측"]}
-              />
-
-              <IntegratedProjectCard
-                projectId="clothes-memory"
-                title="기웃기옷 - 옷 기억도 분석 서비스"
-                description="사용자가 입으려는 옷이 주변 사람들에게 얼마나 기억에 남는지 분석하고, 더 나은 스타일 선택을 지원하는 서비스입니다."
-                image="/placeholder.svg?height=300&width=500"
-                frontendTech={["Vue.js", "Vuex", "TailwindCSS"]}
-                backendTech={["Django", "PostgreSQL", "WebSocket"]}
-                aiTech={["CNN-LSTM", "Pyannote", "이미지 인식"]}
-              />
-            </div>
+            {filteredProjects.length === 0 && (
+              <div className="col-span-full py-16 text-center text-gray-500">
+                <p className="text-xl">해당 카테고리의 프로젝트가 없습니다.</p>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
       {/* Career 섹션 */}
-      <section id="career" className="min-h-screen py-20">
+      <section id="career" className="min-h-screen py-20 section-bg-alt">
         <div className="container mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
@@ -507,15 +581,21 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             className="mb-16 text-4xl font-light md:text-5xl"
           >
-            Career
+            Education & Experience
           </motion.h2>
 
           <div className="mx-auto max-w-4xl">
             <div className="relative space-y-12 pl-8 before:absolute before:left-0 before:top-2 before:h-full before:w-0.5 before:bg-gray-300">
+              
+              <EducationItem
+                period="2024.01 ~ 2024.12"
+                institution="삼성 청년 SW 아카데미 11기"
+                description="프로젝트 기반 학습을 통해 실무 역량을 키우고, 다양한 기술 스택을 활용한 웹/앱 서비스 개발 경험을 쌓았습니다."
+              />
               <CareerItem
-                period="2021.10 ~ 2023.11"
+                period="2022.08 ~ 2023.11"
                 company="차세대융합기술연구원"
-                position="개발부 디자인팀 - 웹 디자인 총괄"
+                position="산업지능연구실"
                 description={[
                   "Photoshop을 활용해 홍보 랜딩 페이지, 웹 디자인 작업",
                   "HTML, CSS 활용해 웹 표준 접근성에 신경쓰며 자사 및 타사 웹 사이트 퍼블리싱",
@@ -525,14 +605,20 @@ export default function Home() {
               />
 
               <CareerItem
-                period="2017.05 - 2021.04"
-                company="(주)비전트리"
-                position="개발부 디자인팀 - 웹 디자인 총괄"
+                period="2021.10 ~ 2022.06"
+                company="차세대융합기술연구원"
+                position="기술기획팀"
                 description={[
-                  "Photoshop을 활용해 홍보 랜딩 페이지, 웹 디자인 작업",
+                  "인공지능 기반 영유아 안전보육 시스템 개발",
                   "Photoshop, Illustrator를 활용해 홍보물 디자인 작업",
                   "HTML, CSS 활용해 웹 표준 접근성에 신경쓰며 자사 및 타사 웹 사이트 퍼블리싱",
                 ]}
+              />
+
+              <EducationItem
+                period="2017.03 ~ 2021.18"
+                institution="산업데이터사이언스전공"
+                description=""
               />
             </div>
           </div>
@@ -540,7 +626,7 @@ export default function Home() {
       </section>
 
       {/* Awards 섹션 */}
-      <section id="awards" className="min-h-screen py-20 section-bg-alt">
+      <section id="awards" className="min-h-screen py-20">
         <div className="container mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
@@ -586,7 +672,7 @@ export default function Home() {
                         카메라 및 관성 측정 장치 융합을 활용한 딥러닝 기반 수작업 조립 공정 작업자 동작 인식 방법론 개발
                       </div>
                       <a
-                        href="../public/paper.pdf"
+                        href="/paper.pdf"
                         target="_blank"
                         className="mt-2 inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
                         rel="noreferrer"
@@ -616,52 +702,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Education 섹션 */}
-      <section id="education" className="min-h-screen py-20">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
-            className="mb-16 text-4xl font-light md:text-5xl"
-          >
-            Education & Experience
-          </motion.h2>
-
-          <div className="mx-auto max-w-4xl">
-            <div className="relative space-y-12 pl-8 before:absolute before:left-0 before:top-2 before:h-full before:w-0.5 before:bg-gray-300">
-              <EducationItem
-                period="2024.01 ~ 2024.12"
-                institution="삼성 청년 SW 아카데미 11기"
-                description="프로젝트 기반 학습을 통해 실무 역량을 키우고, 다양한 기술 스택을 활용한 웹/앱 서비스 개발 경험을 쌓았습니다."
-              />
-
-              <EducationItem
-                period="2021.10 ~ 2023.11"
-                institution="차세대융합기술연구원"
-                description=""
-                details={[
-                  "인공지능 기반 영유아 안전보육 시스템 개발",
-                  "작업자 동작 분석 및 이상 탐지 시스템 개발",
-                  "작업자 위험 감지를 위한 멀티모달 딥러닝 기반 자세 인식 모델 개발",
-                ]}
-              />
-
-              <EducationItem
-                period="2017.03 ~ 2021.18"
-                institution="산업데이터사이언스전공"
-                description=""
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* 고정 네비게이션 */}
       <div className="fixed bottom-8 right-8 flex flex-col gap-4">
         <a
-          href="mailto:example@email.com"
+          href="gmlwls2407@gmail.com"
           className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md transition-all hover:bg-gray-100"
           aria-label="이메일 보내기"
         >

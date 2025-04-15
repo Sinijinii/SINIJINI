@@ -12,9 +12,9 @@ interface IntegratedProjectCardProps {
   title: string
   description: string
   image: string
-  frontendTech: string[]
-  backendTech: string[]
-  aiTech: string[]
+  frontendTech?: string[]
+  backendTech?: string[]
+  aiTech?: string[]
 }
 
 export default function IntegratedProjectCard({
@@ -22,11 +22,12 @@ export default function IntegratedProjectCard({
   title,
   description,
   image,
-  frontendTech,
-  backendTech,
-  aiTech,
+  aiTech = [],
+  frontendTech = [],
+  backendTech = [],
 }: IntegratedProjectCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
 
   // 프로젝트 데이터 찾기
   const projectData = projects.find((p) => p.id === projectId)
@@ -35,80 +36,68 @@ export default function IntegratedProjectCard({
     return null
   }
 
+  // 각 기술 영역이 있는지 확인
+  const hasAiTech = aiTech.length > 0
+  const hasFrontendTech = frontendTech.length > 0
+  const hasBackendTech = backendTech.length > 0
+
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7 }}
-        className="project-card overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100"
+        className="group relative overflow-hidden rounded-xl bg-white shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="relative h-48 overflow-hidden">
+        {/* 이미지 섹션 */}
+        <div className="relative h-56 overflow-hidden">
           <Image
-            src={image || "/placeholder.svg"}
+            src={image}
             alt={title}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className={`object-cover transition-transform duration-700 ${isHovered ? 'scale-105' : 'scale-100'}`}
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60"></div>
+          
+          {/* 오버레이 기술 태그 */}
+          <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
+            {hasAiTech && (
+              <span className="rounded-full bg-purple-500/90 px-3 py-1 text-xs font-medium text-white">
+                AI/ML
+              </span>
+            )}
+            {hasFrontendTech && (
+              <span className="rounded-full bg-blue-500/90 px-3 py-1 text-xs font-medium text-white">
+                Frontend
+              </span>
+            )}
+            {hasBackendTech && (
+              <span className="rounded-full bg-green-500/90 px-3 py-1 text-xs font-medium text-white">
+                Backend
+              </span>
+            )}
+          </div>
         </div>
+        
+        {/* 컨텐츠 섹션 */}
         <div className="p-6">
-          <h3 className="mb-2 text-xl font-medium">{title}</h3>
-          <p className="mb-4 text-sm text-gray-600">{description}</p>
-
-          <div className="mb-3">
-            <div className="mb-1 flex items-center">
-              <Code className="mr-2 h-4 w-4 text-blue-500" />
-              <span className="text-xs font-medium text-gray-700">Frontend</span>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {frontendTech.map((tech, index) => (
-                <span key={index} className="rounded-full bg-blue-50 px-2 py-1 text-xs text-blue-700">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="mb-3">
-            <div className="mb-1 flex items-center">
-              <Database className="mr-2 h-4 w-4 text-green-500" />
-              <span className="text-xs font-medium text-gray-700">Backend</span>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {backendTech.map((tech, index) => (
-                <span key={index} className="rounded-full bg-green-50 px-2 py-1 text-xs text-green-700">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="mb-4">
-            <div className="mb-1 flex items-center">
-              <Brain className="mr-2 h-4 w-4 text-purple-500" />
-              <span className="text-xs font-medium text-gray-700">AI/ML</span>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {aiTech.map((tech, index) => (
-                <span key={index} className="rounded-full bg-purple-50 px-2 py-1 text-xs text-purple-700">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-
+          <h3 className="mb-3 text-xl font-medium line-clamp-2">{title}</h3>
+          <p className="mb-6 text-gray-600 line-clamp-3">{description}</p>
+          
           <button
             onClick={() => setIsModalOpen(true)}
-            className="inline-flex items-center text-sm font-medium text-gray-700 transition-colors hover:text-gray-900"
+            className="inline-flex items-center text-sm font-medium text-gray-700 transition-colors hover:text-gray-900 group"
           >
             자세히 보기
-            <ExternalLink className="ml-1 h-4 w-4" />
+            <ExternalLink className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </button>
         </div>
       </motion.div>
 
-      <ProjectDetailModal project={projectData} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ProjectDetailModal project={projectData as any} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   )
 }

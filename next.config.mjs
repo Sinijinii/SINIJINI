@@ -16,6 +16,7 @@ const nextConfig = {
   output: 'export',
   basePath: '/SINIJINI',
   assetPrefix: '/SINIJINI',
+  
   images: {
     unoptimized: true,
   },

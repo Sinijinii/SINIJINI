@@ -16,8 +16,8 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
   output: 'export',
-  basePath: isProd ? '/SINIJINI' : '',
-  assetPrefix: isProd ? '/SINIJINI' : '',
+  // basePath: isProd ? '/SINIJINI' : '',
+  // assetPrefix: isProd ? '/SINIJINI' : '',
   images: {
     unoptimized: true,
   },

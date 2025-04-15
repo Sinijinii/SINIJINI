@@ -13,6 +13,7 @@ try {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -28,6 +29,7 @@ const nextConfig = {
     parallelServerCompiles: true,
   },
 }
+
 
 if (userConfig) {
   // ESM imports will have a "default" property

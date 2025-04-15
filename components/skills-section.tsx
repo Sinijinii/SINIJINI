@@ -22,6 +22,7 @@ export default function SkillsSection() {
               level={3}
               description={[
                 "서버 사이드 렌더링(SSR)을 통해 동적인 웹 페이지 구현 가능",
+          
                 "URL 패턴을 활용하여 API 엔드포인트를 설계하고, 데이터 처리 로직 구현 가능",
               ]}
             />

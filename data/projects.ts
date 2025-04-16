@@ -238,6 +238,7 @@ export const projects = [
     result:
       "기억도라는 생소한 개념을 실제 사용자 경험으로 구현할 수 있었으며, 음성 입력, 시선 추적, AI 분석 등 다양한 기술을 융합한 데이터 기반 패션 피드백 서비스의 가능성을 실험했습니다.",
     ai: {
+      images:["/project/giutgiot/ai1.gif","/project/giutgiot/ai2.gif","/project/giutgiot/ai3.gif","/project/giutgiot/ai4.png"],
       description: "사용자의 움직임, 시선, 음성 및 대화 데이터를 기반으로 옷의 기억도를 분석하는 멀티모달 AI 모델을 개발했습니다.",
       responsibilities: [
         "CNN-LSTM 모델을 활용한 움직임 감지 및 특정 타이밍의 음성 녹음 트리거 개발",
@@ -264,11 +265,13 @@ export const projects = [
       ]
     },
     frontend: {
+      images:["/project/giutgiot/f1.gif","/project/giutgiot/ai4.png"],
       description:
-        "사용자의 옷 정보를 음성으로 간편하게 등록하고, 개인 맞춤 설정 화면을 직관적인 UI로 구현했습니다.",
+        "사용자의 옷 정보를 음성으로 간편하게 등록하고, 백엔드 API와 연동되는 데이터 흐름을 관리하며 안정적인 사용자 경험을 제공했습니다.",
       responsibilities: [
         "음성 입력 기반 코디 등록 인터페이스 구현",
-        "소셜 로그인(OAuth) 및 사용자 설정 페이지 개발"
+        "소셜 로그인(OAuth) 및 사용자 설정 페이지 개발",
+        "백엔드에서 전달받은 데이터, AI 분석 결과(기억도, 시선 추적 결과 등)를 관리하는 전역 상태 관리 구조(Store) 설계 및 적용"
       ],
       tech: ["Flutter", "OAuth", "Chart library"],
       troubleshooting: [
@@ -280,7 +283,8 @@ export const projects = [
       ],
       growth: [
         "Flutter를 활용한 반응형 UI 설계 및 OAuth 인증 처리를 경험하며 학습할 수 있었습니다.",
-        "복잡한 AI 모델 출력을 사용자 친화적으로 시각화하는 프론트 기술 학습할 수 있었습니다."
+        "AI 모델 결과를 프론트로 연동하는 구조를 직접 설계하고, 상태 변화에 따른 UI 반응을 최적화하는 경험을 통해 AI 기반 서비스의 데이터 흐름 전체 구조에 대한 이해를 할 수 있었습니다.",
+        "단순한 뷰 설계를 넘어, AI 결과 → 데이터 Store → UI 연동 흐름 전체를 주도적으로 설계하며, 재사용 가능한 설계 패턴을 학습하였습니다."
       ]
     },
     categories: ["ai", "frontend"]

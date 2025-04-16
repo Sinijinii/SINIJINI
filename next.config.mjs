@@ -11,13 +11,16 @@ try {
   }
 }
 
+const repo = 'SINJIJII'; // GitHub 저장소 이름
+
 const isProd = process.env.NODE_ENV === 'production';
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
   output: 'export',
-  basePath: isProd ? '/SINIJINI' : '',
-  assetPrefix: isProd ? '/SINIJINI/' : '',
+  basePath: process.env.NODE_ENV === 'production' ? `/${repo}` : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? `/${repo}/` : '',
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },

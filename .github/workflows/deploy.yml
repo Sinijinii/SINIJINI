@@ -1,31 +1,42 @@
-name: Deploy Website
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main ] # 또는 master
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
-        
-      # Node.js 설정 (프로젝트에 맞게 조정)
-      - name: Set up Node.js
+
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          
+
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps #npm install --legacy-peer-deps
-        
+        run: npm install --legacy-peer-deps
+
       - name: Build
         run: npm run build
-        
-      # 여기에 배포 단계 추가
+        env:
+          NODE_ENV: production
+
+      - name: Add .nojekyll file
+        run: touch out/.nojekyll
+
+      - name: Fix path issues
+        run: |
+          cd out
+          find . -type f -name "*.html" -exec sed -i 's|href="/_next/|href="./next/|g' {} \;
+          find . -type f -name "*.html" -exec sed -i 's|src="/_next/|src="./next/|g' {} \;
+          cd ..
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: out  # ← Next.js는 build 결과를 out 폴더에 저장
-          branch: gh-pages  # 배포할 브랜치
+          folder: out
+          branch: gh-pages
+          clean: true

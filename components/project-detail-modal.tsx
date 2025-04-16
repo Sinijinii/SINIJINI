@@ -153,6 +153,19 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                 >
                   개요
                 </button>
+                {hasAI && (
+                  <button
+                    onClick={() => setActiveTab("ai")}
+                    className={`flex items-center px-6 py-4 text-sm font-medium ${
+                      activeTab === "ai"
+                        ? "border-b-2 border-purple-500 text-purple-600"
+                        : "text-gray-500 hover:text-gray-700"
+                    }`}
+                  >
+                    <Brain className="mr-2 h-4 w-4" />
+                    AI/ML
+                  </button>
+                )}
                 {hasFrontend && (
                   <button
                     onClick={() => setActiveTab("frontend")}
@@ -179,19 +192,7 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                     백엔드
                   </button>
                 )}
-                {hasAI && (
-                  <button
-                    onClick={() => setActiveTab("ai")}
-                    className={`flex items-center px-6 py-4 text-sm font-medium ${
-                      activeTab === "ai"
-                        ? "border-b-2 border-purple-500 text-purple-600"
-                        : "text-gray-500 hover:text-gray-700"
-                    }`}
-                  >
-                    <Brain className="mr-2 h-4 w-4" />
-                    AI/ML
-                  </button>
-                )}
+  
               </div>
             </div>
 
@@ -245,279 +246,7 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
               </div>
             )}
 
-              {activeTab === "frontend" && project.frontend && (
-                <div className="space-y-8">
-                  {/* 주요 내용 */}
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="mb-2 text-xl font-medium">프론트엔드 개발 개요</h3>
-                      <p className="text-gray-600">{project.frontend.description}</p>
-                    </div>
-
-                    {/* 프론트엔드 이미지 섹션 추가 */}
-                    {project.frontend.images && project.frontend.images.length > 0 && (
-                      <div className="pt-2">
-                        <h3 className="mb-4 text-xl font-medium">프론트엔드 구현 이미지</h3>
-                        <div className="space-y-6">
-                          {project.frontend.images.map((img, index) => (
-                            <div key={index} className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
-                              <Image
-                                src={img || "/placeholder.svg?height=400&width=900"}
-                                alt={`프론트엔드 이미지 ${index + 1}`}
-                                fill
-                                className="object-contain"
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    <div>
-                      <h3 className="mb-2 text-xl font-medium">담당 업무</h3>
-                      <ul className="list-inside list-disc space-y-1 text-gray-600">
-                        {project.frontend.responsibilities.map((item, index) => (
-                          <li key={index}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    {project.frontend.features && project.frontend.features.length > 0 && (
-                      <div>
-                        <h3 className="mb-2 text-xl font-medium">주요 기능</h3>
-                        <ul className="list-inside list-disc space-y-1 text-gray-600">
-                          {project.frontend.features.map((item, index) => (
-                            <li key={index}>{item}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    <div>
-                      <h3 className="mb-2 text-xl font-medium">사용 기술</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {project.frontend.tech.map((tech, index) => (
-                          <span key={index} className="rounded-full bg-blue-50 px-3 py-1 text-sm text-blue-700">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  {/* 트러블 슈팅 */}
-                  {project.frontend.troubleshooting && project.frontend.troubleshooting.length > 0 && (
-                    <div className="border-t border-gray-200 pt-8">
-                      <div className="flex items-center">
-                        <Wrench className="mr-2 h-5 w-5 text-blue-500" />
-                        <h3 className="text-xl font-medium">트러블 슈팅</h3>
-                      </div>
-                      <div className="mt-4 space-y-6">
-                        {project.frontend.troubleshooting.map((item, index) => (
-                          <div key={index} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
-                            <h4 className="mb-2 font-medium text-red-600">문제점</h4>
-                            <p className="mb-4 text-gray-700">{item.problem}</p>
-
-                            <h4 className="mb-2 font-medium text-blue-600">해결 방법</h4>
-                            <p className="mb-4 text-gray-700">{item.solution}</p>
-
-                            {/* 결과가 있을 때만 렌더링 */}
-                            {item.result && (
-                              <>
-                                <h4 className="mb-2 font-medium text-green-600">결과</h4>
-                                <p className="text-gray-700">{item.result}</p>
-                              </>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* 기술적 성장 */}
-                  {project.frontend.growth && project.frontend.growth.length > 0 && (
-                    <div className="border-t border-gray-200 pt-8">
-                      <div className="flex items-center">
-                        <TrendingUp className="mr-2 h-5 w-5 text-blue-500" />
-                        <h3 className="text-xl font-medium">기술적 성장</h3>
-                      </div>
-                      <div className="mt-4 rounded-lg border border-gray-200 bg-blue-50 p-4">
-                        <ul className="space-y-3">
-                          {project.frontend.growth.map((item, index) => (
-                            <li key={index} className="flex items-start">
-                              <TrendingUp className="mr-2 mt-1 h-4 w-4 flex-shrink-0 text-blue-600" />
-                              <span className="text-gray-700">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* 화면 설계
-                  {project.frontend.wireframes && project.frontend.wireframes.length > 0 && (
-                    <div className="border-t border-gray-200 pt-8">
-                      <h3 className="mb-4 text-xl font-medium">작업 화면</h3>
-                      <div className="grid grid-cols-1 gap-6">
-                        {project.frontend.wireframes.map((img, index) => (
-                          <div key={index} className="space-y-2">
-                            <div className="relative h-[400px] overflow-hidden rounded-lg border border-gray-200">
-                              <Image
-                                src={img || "/placeholder.svg"}
-                                alt={`와이어프레임 ${index + 1}`}
-                                fill
-                                className="object-contain"
-                              />
-                            </div>
-                            <p className="text-center text-sm text-gray-500">화면 설계 {index + 1}</p>
-                          </div>
-                        ))}
-                      </div>
-                      <p className="mt-4 text-sm text-gray-600">
-                        위 와이어프레임은 사용자 경험을 최적화하기 위해 설계된 화면 구성입니다. 사용자 테스트와 피드백을
-                        통해 지속적으로 개선되었습니다.
-                      </p>
-                    </div>
-                  )} */}
-                </div>
-              )}
-
-              {activeTab === "backend" && project.backend && (
-                <div className="space-y-8">
-                  {/* 주요 내용 */}
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="mb-2 text-xl font-medium">백엔드 개발 개요</h3>
-                      <p className="text-gray-600">{project.backend.description}</p>
-                    </div>
-
-                    {/* 백엔드 이미지 섹션 추가 */}
-                    {project.backend.images && project.backend.images.length > 0 && (
-                      <div className="pt-2">
-                        <h3 className="mb-4 text-xl font-medium">백엔드 구현 이미지</h3>
-                        <div className="space-y-6">
-                          {project.backend.images.map((img, index) => (
-                            <div key={index} className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
-                              <Image
-                                src={img || "/placeholder.svg?height=400&width=900"}
-                                alt={`백엔드 이미지 ${index + 1}`}
-                                fill
-                                className="object-contain"
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    <div>
-                      <h3 className="mb-2 text-xl font-medium">담당 업무</h3>
-                      <ul className="list-inside list-disc space-y-1 text-gray-600">
-                        {project.backend.responsibilities.map((item, index) => (
-                          <li key={index}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    {project.backend.features && project.backend.features.length > 0 && (
-                      <div>
-                        <h3 className="mb-2 text-xl font-medium">주요 기능</h3>
-                        <ul className="list-inside list-disc space-y-1 text-gray-600">
-                          {project.backend.features.map((item, index) => (
-                            <li key={index}>{item}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    {project.backend.architecture && (
-                      <div>
-                        <h3 className="mb-2 text-xl font-medium">시스템 아키텍처</h3>
-                        <p className="text-gray-600">{project.backend.architecture}</p>
-                      </div>
-                    )}
-
-
-
-                    {/* 아키텍처 이미지 추가 */}
-                    {project.backend.architectureImage && (
-                      <div className="pt-2">
-                        <div className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
-                          <Image
-                            src={project.backend.architectureImage || "/placeholder.svg?height=400&width=900"}
-                            alt="시스템 아키텍처 다이어그램"
-                            fill
-                            className="object-contain"
-                          />
-                        </div>
-                        {project.backend.architectureImageCaption && (
-                          <p className="mt-2 text-center text-sm text-gray-500">
-                            {project.backend.architectureImageCaption}
-                          </p>
-                        )}
-                      </div>
-                    )}
-
-
-                    <div>
-                      <h3 className="mb-2 text-xl font-medium">사용 기술</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {project.backend.tech.map((tech, index) => (
-                          <span key={index} className="rounded-full bg-green-50 px-3 py-1 text-sm text-green-700">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 트러블 슈팅 */}
-                  {project.backend.troubleshooting && project.backend.troubleshooting.length > 0 && (
-                    <div className="border-t border-gray-200 pt-8">
-                      <div className="flex items-center">
-                        <Wrench className="mr-2 h-5 w-5 text-green-500" />
-                        <h3 className="text-xl font-medium">트러블 슈팅</h3>
-                      </div>
-                      <div className="mt-4 space-y-6">
-                        {project.backend.troubleshooting.map((item, index) => (
-                          <div key={index} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
-                            <h4 className="mb-2 font-medium text-red-600">문제점</h4>
-                            <p className="mb-4 text-gray-700">{item.problem}</p>
-
-                            <h4 className="mb-2 font-medium text-blue-600">해결 방법</h4>
-                            <p className="mb-4 text-gray-700">{item.solution}</p>
-
-                            {/* 결과가 있을 때만 렌더링 */}
-                            {item.result && (
-                              <>
-                                <h4 className="mb-2 font-medium text-green-600">결과</h4>
-                                <p className="text-gray-700">{item.result}</p>
-                              </>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* 기술적 성장 */}
-                  {project.backend.growth && project.backend.growth.length > 0 && (
-                    <div className="border-t border-gray-200 pt-8">
-                      <div className="flex items-center">
-                        <TrendingUp className="mr-2 h-5 w-5 text-green-500" />
-                        <h3 className="text-xl font-medium">기술적 성장</h3>
-                      </div>
-                      <div className="mt-4 rounded-lg border border-gray-200 bg-green-50 p-4">
-                        <ul className="space-y-3">
-                          {project.backend.growth.map((item, index) => (
-                            <li key={index} className="flex items-start">
-                              <TrendingUp className="mr-2 mt-1 h-4 w-4 flex-shrink-0 text-green-600" />
-                              <span className="text-gray-700">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {activeTab === "ai" && project.ai && (
+{activeTab === "ai" && project.ai && (
                 <div className="space-y-8">
                   {/* 주요 내용 */}
                   <div className="space-y-6">
@@ -525,28 +254,6 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                       <h3 className="mb-2 text-xl font-medium">AI/ML 개발 개요</h3>
                       <p className="text-gray-600">{project.ai.description}</p>
                     </div>
-
-
-                    {/* AI 이미지 섹션 추가 */}
-                    {project.ai.images && project.ai.images.length > 0 && (
-                      <div className="pt-2">
-                        <h3 className="mb-4 text-xl font-medium">AI/ML 구현 이미지</h3>
-                        <div className="space-y-6">
-                          {project.ai.images.map((img, index) => (
-                            <div key={index} className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
-                              <Image
-                                src={img || "/placeholder.svg?height=400&width=900"}
-                                alt={`AI/ML 이미지 ${index + 1}`}
-                                fill
-                                className="object-contain"
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-
                     <div>
                       <h3 className="mb-2 text-xl font-medium">담당 업무</h3>
                       <ul className="list-inside list-disc space-y-1 text-gray-600">
@@ -637,6 +344,292 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                       </div>
                     </div>
                   )}
+                  {/* AI 이미지 섹션 추가 */}
+                  {project.ai.images && project.ai.images.length > 0 && (
+                      <div className="pt-2">
+                        <h3 className="mb-4 text-xl font-medium">AI/ML 구현 이미지</h3>
+                        <div className="space-y-6">
+                          {project.ai.images.map((img, index) => (
+                            <div key={index} className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
+                              <Image
+                                src={img || "/placeholder.svg?height=400&width=900"}
+                                alt={`AI/ML 이미지 ${index + 1}`}
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                </div>
+              )}
+
+
+              {activeTab === "frontend" && project.frontend && (
+                <div className="space-y-8">
+                  {/* 주요 내용 */}
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="mb-2 text-xl font-medium">프론트엔드 개발 개요</h3>
+                      <p className="text-gray-600">{project.frontend.description}</p>
+                    </div>
+
+                    <div>
+                      <h3 className="mb-2 text-xl font-medium">담당 업무</h3>
+                      <ul className="list-inside list-disc space-y-1 text-gray-600">
+                        {project.frontend.responsibilities.map((item, index) => (
+                          <li key={index}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    {project.frontend.features && project.frontend.features.length > 0 && (
+                      <div>
+                        <h3 className="mb-2 text-xl font-medium">주요 기능</h3>
+                        <ul className="list-inside list-disc space-y-1 text-gray-600">
+                          {project.frontend.features.map((item, index) => (
+                            <li key={index}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    <div>
+                      <h3 className="mb-2 text-xl font-medium">사용 기술</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {project.frontend.tech.map((tech, index) => (
+                          <span key={index} className="rounded-full bg-blue-50 px-3 py-1 text-sm text-blue-700">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  {/* 트러블 슈팅 */}
+                  {project.frontend.troubleshooting && project.frontend.troubleshooting.length > 0 && (
+                    <div className="border-t border-gray-200 pt-8">
+                      <div className="flex items-center">
+                        <Wrench className="mr-2 h-5 w-5 text-blue-500" />
+                        <h3 className="text-xl font-medium">트러블 슈팅</h3>
+                      </div>
+                      <div className="mt-4 space-y-6">
+                        {project.frontend.troubleshooting.map((item, index) => (
+                          <div key={index} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+                            <h4 className="mb-2 font-medium text-red-600">문제점</h4>
+                            <p className="mb-4 text-gray-700">{item.problem}</p>
+
+                            <h4 className="mb-2 font-medium text-blue-600">해결 방법</h4>
+                            <p className="mb-4 text-gray-700">{item.solution}</p>
+
+                            {/* 결과가 있을 때만 렌더링 */}
+                            {item.result && (
+                              <>
+                                <h4 className="mb-2 font-medium text-green-600">결과</h4>
+                                <p className="text-gray-700">{item.result}</p>
+                              </>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* 기술적 성장 */}
+                  {project.frontend.growth && project.frontend.growth.length > 0 && (
+                    <div className="border-t border-gray-200 pt-8">
+                      <div className="flex items-center">
+                        <TrendingUp className="mr-2 h-5 w-5 text-blue-500" />
+                        <h3 className="text-xl font-medium">기술적 성장</h3>
+                      </div>
+                      <div className="mt-4 rounded-lg border border-gray-200 bg-blue-50 p-4">
+                        <ul className="space-y-3">
+                          {project.frontend.growth.map((item, index) => (
+                            <li key={index} className="flex items-start">
+                              <TrendingUp className="mr-2 mt-1 h-4 w-4 flex-shrink-0 text-blue-600" />
+                              <span className="text-gray-700">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* 프론트엔드 이미지 섹션 추가 */}
+                  {project.frontend.images && project.frontend.images.length > 0 && (
+                      <div className="pt-2">
+                        <h3 className="mb-4 text-xl font-medium">프론트엔드 구현 이미지</h3>
+                        <div className="space-y-6">
+                          {project.frontend.images.map((img, index) => (
+                            <div key={index} className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
+                              <Image
+                                src={img || "/placeholder.svg?height=400&width=900"}
+                                alt={`프론트엔드 이미지 ${index + 1}`}
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                  {/* 화면 설계
+                  {project.frontend.wireframes && project.frontend.wireframes.length > 0 && (
+                    <div className="border-t border-gray-200 pt-8">
+                      <h3 className="mb-4 text-xl font-medium">작업 화면</h3>
+                      <div className="grid grid-cols-1 gap-6">
+                        {project.frontend.wireframes.map((img, index) => (
+                          <div key={index} className="space-y-2">
+                            <div className="relative h-[400px] overflow-hidden rounded-lg border border-gray-200">
+                              <Image
+                                src={img || "/placeholder.svg"}
+                                alt={`와이어프레임 ${index + 1}`}
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                            <p className="text-center text-sm text-gray-500">화면 설계 {index + 1}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-4 text-sm text-gray-600">
+                        위 와이어프레임은 사용자 경험을 최적화하기 위해 설계된 화면 구성입니다. 사용자 테스트와 피드백을
+                        통해 지속적으로 개선되었습니다.
+                      </p>
+                    </div>
+                  )} */}
+                </div>
+              )}
+
+              {activeTab === "backend" && project.backend && (
+                <div className="space-y-8">
+                  {/* 주요 내용 */}
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="mb-2 text-xl font-medium">백엔드 개발 개요</h3>
+                      <p className="text-gray-600">{project.backend.description}</p>
+                    </div>
+                    <div>
+                      <h3 className="mb-2 text-xl font-medium">담당 업무</h3>
+                      <ul className="list-inside list-disc space-y-1 text-gray-600">
+                        {project.backend.responsibilities.map((item, index) => (
+                          <li key={index}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    {project.backend.features && project.backend.features.length > 0 && (
+                      <div>
+                        <h3 className="mb-2 text-xl font-medium">주요 기능</h3>
+                        <ul className="list-inside list-disc space-y-1 text-gray-600">
+                          {project.backend.features.map((item, index) => (
+                            <li key={index}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    {project.backend.architecture && (
+                      <div>
+                        <h3 className="mb-2 text-xl font-medium">시스템 아키텍처</h3>
+                        <p className="text-gray-600">{project.backend.architecture}</p>
+                      </div>
+                    )}
+
+                    {/* 아키텍처 이미지 추가 */}
+                    {project.backend.architectureImage && (
+                      <div className="pt-2">
+                        <div className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
+                          <Image
+                            src={project.backend.architectureImage || "/placeholder.svg?height=400&width=900"}
+                            alt="시스템 아키텍처 다이어그램"
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                        {project.backend.architectureImageCaption && (
+                          <p className="mt-2 text-center text-sm text-gray-500">
+                            {project.backend.architectureImageCaption}
+                          </p>
+                        )}
+                      </div>
+                    )}
+
+                    <div>
+                      <h3 className="mb-2 text-xl font-medium">사용 기술</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {project.backend.tech.map((tech, index) => (
+                          <span key={index} className="rounded-full bg-green-50 px-3 py-1 text-sm text-green-700">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 트러블 슈팅 */}
+                  {project.backend.troubleshooting && project.backend.troubleshooting.length > 0 && (
+                    <div className="border-t border-gray-200 pt-8">
+                      <div className="flex items-center">
+                        <Wrench className="mr-2 h-5 w-5 text-green-500" />
+                        <h3 className="text-xl font-medium">트러블 슈팅</h3>
+                      </div>
+                      <div className="mt-4 space-y-6">
+                        {project.backend.troubleshooting.map((item, index) => (
+                          <div key={index} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+                            <h4 className="mb-2 font-medium text-red-600">문제점</h4>
+                            <p className="mb-4 text-gray-700">{item.problem}</p>
+
+                            <h4 className="mb-2 font-medium text-blue-600">해결 방법</h4>
+                            <p className="mb-4 text-gray-700">{item.solution}</p>
+
+                            {/* 결과가 있을 때만 렌더링 */}
+                            {item.result && (
+                              <>
+                                <h4 className="mb-2 font-medium text-green-600">결과</h4>
+                                <p className="text-gray-700">{item.result}</p>
+                              </>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* 기술적 성장 */}
+                  {project.backend.growth && project.backend.growth.length > 0 && (
+                    <div className="border-t border-gray-200 pt-8">
+                      <div className="flex items-center">
+                        <TrendingUp className="mr-2 h-5 w-5 text-green-500" />
+                        <h3 className="text-xl font-medium">기술적 성장</h3>
+                      </div>
+                      <div className="mt-4 rounded-lg border border-gray-200 bg-green-50 p-4">
+                        <ul className="space-y-3">
+                          {project.backend.growth.map((item, index) => (
+                            <li key={index} className="flex items-start">
+                              <TrendingUp className="mr-2 mt-1 h-4 w-4 flex-shrink-0 text-green-600" />
+                              <span className="text-gray-700">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  )}
+                  {/* 백엔드 이미지 섹션 추가 */}
+                  {project.backend.images && project.backend.images.length > 0 && (
+                      <div className="pt-2">
+                        <h3 className="mb-4 text-xl font-medium">백엔드 구현 이미지</h3>
+                        <div className="space-y-6">
+                          {project.backend.images.map((img, index) => (
+                            <div key={index} className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
+                              <Image
+                                src={img || "/placeholder.svg?height=400&width=900"}
+                                alt={`백엔드 이미지 ${index + 1}`}
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                 </div>
               )}
             </div>

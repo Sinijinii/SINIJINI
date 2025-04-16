@@ -283,9 +283,106 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Career 섹션 */}
+      
+      <section id="career" className="min-h-screen py-20">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7 }}
+            className="mb-16 text-4xl font-light md:text-5xl"
+          >
+            {/* Education & Experience */}
+          </motion.h2>
+
+          {/* ✨ 2단 그리드로 변경 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            
+            {/* 왼쪽: 커리어 타임라인 */}
+            <div className="relative space-y-12 pl-8 before:absolute before:left-0 before:top-2 before:h-full before:w-0.5 before:bg-gray-300">
+            <h3 className="mb-6 text-2xl font-medium">Education & Experience</h3>
+              <EducationItem
+                period="2024.01 ~ 2024.12"
+                institution="삼성 청년 SW 아카데미 11기"
+                description="프로젝트 기반 학습을 통해 실무 역량을 키우고, 다양한 기술 스택을 활용한 웹/앱 서비스 개발 경험을 쌓았습니다."
+              />
+              <CareerItem
+                period="2022.08 ~ 2023.11"
+                company="차세대융합기술연구원"
+                position="산업지능연구실"
+                description={[
+                  "관성 센서-카메라 융합 작업자 동작 인식 모델 개발",
+                  "작업 패턴 모델 기반 실시간 작업 이상 탐지 알고리즘 개발",
+                  "작업자의 위험을 감지하기 위한 멀티모달 딥러닝 기반 작업자 자세 인식 모델 개발",
+                  "RabbitMQ 기반 실시간 데이터 처리 및 전송 시스템 구축",
+                ]}
+              />
+              <CareerItem
+                period="2021.10 ~ 2022.06"
+                company="차세대융합기술연구원"
+                position="기술기획팀"
+                description={[
+                  "인공지능 기반 영유아 안전보육 시스템 개발",
+                  "영유아 센서 데이터 실시간 수집 및 전처리",
+                  "영유아 이상 탐지 알고리즘 개발",
+                  "학부모, 교사용 웹 보고서 개발"
+                ]}
+              />
+              <EducationItem
+                period="2017.03 ~ 2021.08"
+                institution="산업데이터사이언스전공"
+                description=""
+              />
+            </div>
+
+            {/* 오른쪽: 수상 + 논문 */}
+            <div className="space-y-12">
+              <div>
+                <h3 className="mb-6 text-2xl font-medium">수상</h3>
+                <div className="rounded-xl bg-white p-6 shadow-sm border border-gray-100">
+                  <ul className="space-y-4">
+                    <AwardItem date="2024.11" title="공모전 장려상 (한국관광공사)" />
+                    <AwardItem date="2024.11" title="자율 프로젝트 우수상 (SSAFY)" />
+                    <AwardItem date="2024.10" title="특화 프로젝트 우수상 (SSAFY)" />
+                    <AwardItem date="2024.05" title="관통 프로젝트 우수상 (SSAFY)" />
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="mb-6 text-2xl font-medium">논문</h3>
+                <div className="rounded-xl bg-white p-6 shadow-sm border border-gray-100">
+                  <ul className="space-y-4">
+                    <li>
+                      <div className="text-sm font-medium text-gray-500">2023.05</div>
+                      <div className="text-gray-800">
+                        카메라 및 관성 측정 장치 융합을 활용한 딥러닝 기반 수작업 조립 공정 작업자 동작 인식 방법론 개발
+                      </div>
+                      <a
+                        href="/paper.pdf"
+                        target="_blank"
+                        className="mt-2 inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
+                        rel="noreferrer"
+                      >
+                        논문 보기
+                        <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* 기술 통합 섹션 */}
-      <section id="tech-integration" className="min-h-screen py-20">
+      <section id="tech-integration" className="min-h-screen py-20 section-bg-alt">
         <div className="container mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
@@ -361,93 +458,97 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills 섹션 */}
-      <section id="skills" className="min-h-screen py-20 section-bg-alt">
-        <div className="container mx-auto px-4">
-    
+      <section id="skills" className="min-h-screen py-20">
+        <div className="container mx-auto px-6">
           <motion.h2
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
-            className="mb-16 text-4xl font-light md:text-5xl"
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-5xl font-semibold text-center mb-16"
           >
-            {/* Skill & Tools */}
+
           </motion.h2>
 
-          <div className="mx-auto max-w-4xl">
-
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-10">
+            {/* AI / ML */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.6 }}
+              transition={{ duration: 0.6 }}
+              className="rounded-xl p-6 shadow-md border border-gray-200 bg-purple-50"
             >
-              <h3 className="mb-8 text-2xl font-light">AI / ML</h3>
-              <div className="mb-16 flex flex-wrap justify-center gap-6">
-                <SkillIcon name="TensorFlow" icon="/Skills/Tensor.png?height=60&width=60" />
-                <SkillIcon name="PyTorch" icon="/Skills/Pytorch.png?height=60&width=60" />
-                <SkillIcon name="Scikit-learn" icon="/Skills/Scikit.png?height=60&width=60" />
-                <SkillIcon name="HuggingFace" icon="/Skills/hugging.png?height=60&width=60" />
-                <SkillIcon name="LangChain" icon="/Skills/langchain.jpeg?height=60&width=60" />
+              <h3 className="text-xl font-semibold mb-6 text-center text-purple-500">AI / ML</h3>
+              <div className="grid grid-cols-3 gap-6">
+                <SkillIcon name="TensorFlow" icon="/Skills/Tensor.png" />
+                <SkillIcon name="PyTorch" icon="/Skills/Pytorch.png" />
+                <SkillIcon name="Scikit-learn" icon="/Skills/Scikit.png" />
+                <SkillIcon name="HuggingFace" icon="/Skills/hugging.png" />
+                <SkillIcon name="LangChain" icon="/Skills/langchain.jpeg" />
               </div>
             </motion.div>
 
+            {/* Front-End */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="rounded-xl p-6 shadow-md border border-gray-200 bg-blue-50"
             >
-              <h3 className="mb-8 text-2xl font-light">FrontEnd</h3>
-              <div className="mb-16 flex flex-wrap justify-center gap-6">
-                <SkillIcon name="HTML" icon="/Skills/HTML.png?height=350&width=350" />
-                <SkillIcon name="CSS" icon="/Skills/CSS.png?height=60&width=60" />
-                <SkillIcon name="JavaScript" icon="/Skills/JavaScript.png?height=60&width=60" />
-                <SkillIcon name="TypeScript" icon="/Skills/TypeScript.png?height=60&width=60" />
-                <SkillIcon name="React" icon="/Skills/React.png?height=60&width=60" />
-                <SkillIcon name="Vue" icon="/Skills/Vue.png?height=60&width=60" />
-                
+              <h3 className="text-xl font-semibold mb-6 text-center text-blue-500">Front-End</h3>
+              <div className="grid grid-cols-3 gap-6">
+                <SkillIcon name="HTML" icon="/Skills/HTML.png" />
+                <SkillIcon name="CSS" icon="/Skills/CSS.png" />
+                <SkillIcon name="JavaScript" icon="/Skills/JavaScript.png" />
+                <SkillIcon name="TypeScript" icon="/Skills/TypeScript.png" />
+                <SkillIcon name="React" icon="/Skills/React.png" />
+                <SkillIcon name="Vue" icon="/Skills/Vue.png" />
               </div>
             </motion.div>
 
+            {/* Back-End */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="rounded-xl p-6 shadow-md border border-gray-200 bg-green-50"
             >
-              <h3 className="mb-8 text-2xl font-light">Backend</h3>
-              <div className="mb-16 flex flex-wrap justify-center gap-6">
-                <SkillIcon name="Python" icon="/Skills/Python.jpeg?height=60&width=60" />
-                <SkillIcon name="Django" icon="/Skills/Django.png?height=60&width=60" />
-                <SkillIcon name="FastAPI" icon="/Skills/Fastapi.png?height=60&width=60" />
-                <SkillIcon name="Flask" icon="/Skills/Flask.png?height=60&width=60" />
-                <SkillIcon name="Spring" icon="/Skills/spring.png?height=60&width=60" />
+              <h3 className="text-xl font-semibold mb-6 text-center text-green-500">Back-End</h3>
+              <div className="grid grid-cols-3 gap-6">
+                <SkillIcon name="Python" icon="/Skills/Python.jpeg" />
+                <SkillIcon name="Django" icon="/Skills/Django.png" />
+                <SkillIcon name="FastAPI" icon="/Skills/Fastapi.png" />
+                <SkillIcon name="Flask" icon="/Skills/Flask.png" />
+                <SkillIcon name="Spring" icon="/Skills/spring.png" />
               </div>
             </motion.div>
 
+            {/* Tools */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.8 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="rounded-xl p-6 shadow-md border border-gray-200 bg-yellow-50"
             >
-              <h3 className="mb-8 text-2xl font-light">Tools</h3>
-              <div className="flex flex-wrap justify-center gap-6">
-                <SkillIcon name="Git" icon="/Skills/Git.png?height=60&width=60" />
-                <SkillIcon name="GitHub" icon="/Skills/Github.jpeg?height=60&width=60" />
-                <SkillIcon name="JIRA" icon="/Skills/Jira.jpeg?height=60&width=60" />
-                <SkillIcon name="Figma" icon="/Skills/Figma.jpeg?height=60&width=60" />
-                {/* <SkillIcon name="Docker" icon="/Skills/Tensor.png?height=60&width=60" /> */}
+              <h3 className="text-xl font-semibold mb-6 text-center text-yellow-600">Tools</h3>
+              <div className="grid grid-cols-3 gap-6">
+                <SkillIcon name="Git" icon="/Skills/Git.png" />
+                <SkillIcon name="GitHub" icon="/Skills/Github.jpeg" />
+                <SkillIcon name="JIRA" icon="/Skills/Jira.jpeg" />
+                <SkillIcon name="Figma" icon="/Skills/Figma.jpeg" />
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
+
       {/* Projects 섹션 */}
-      <section id="projects" className="min-h-screen py-20">
+      <section id="projects" className="min-h-screen py-20 section-bg-alt">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16">
             <motion.p
@@ -483,103 +584,6 @@ export default function Home() {
                 <p className="text-xl">해당 카테고리의 프로젝트가 없습니다.</p>
               </div>
             )}
-          </div>
-        </div>
-      </section>
-
-      {/* Career 섹션 */}
-      <section id="career" className="min-h-screen py-20 section-bg-alt">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
-            className="mb-16 text-4xl font-light md:text-5xl"
-          >
-            {/* Education & Experience */}
-          </motion.h2>
-
-          {/* ✨ 2단 그리드로 변경 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            
-            {/* 왼쪽: 커리어 타임라인 */}
-            <div className="relative space-y-12 pl-8 before:absolute before:left-0 before:top-2 before:h-full before:w-0.5 before:bg-gray-300">
-            <h3 className="mb-6 text-2xl font-medium">Education & Experience</h3>
-              <EducationItem
-                period="2024.01 ~ 2024.12"
-                institution="삼성 청년 SW 아카데미 11기"
-                description="프로젝트 기반 학습을 통해 실무 역량을 키우고, 다양한 기술 스택을 활용한 웹/앱 서비스 개발 경험을 쌓았습니다."
-              />
-              <CareerItem
-                period="2022.08 ~ 2023.11"
-                company="차세대융합기술연구원"
-                position="산업지능연구실"
-                description={[
-                  "관성 센서-카메라 융합 작업자 동작 인식 모델 개발",
-                  "작업 패턴 모델 기반 실시간 작업 이상 탐지 알고리즘 개발",
-                  "작업자의 위험을 감지하기 위한 멀티모달 딥러닝 기반 작업자 자세 인식 모델 개발",
-                  "RabbitMQ 기반 실시간 데이터 처리 및 전송 시스템 구축",
-                ]}
-              />
-              <CareerItem
-                period="2021.10 ~ 2022.06"
-                company="차세대융합기술연구원"
-                position="기술기획팀"
-                description={[
-                  "인공지능 기반 영유아 안전보육 시스템 개발",
-                  "영유아 센서 데이터 실시간 수집 및 전처리",
-                  "영유아 이상 탐지 알고리즘 개발",
-                  "학부모, 교사용 웹 보고서 개발"
-                ]}
-              />
-              <EducationItem
-                period="2017.03 ~ 2021.18"
-                institution="산업데이터사이언스전공"
-                description=""
-              />
-            </div>
-
-            {/* 오른쪽: 수상 + 논문 */}
-            <div className="space-y-12">
-              <div>
-                <h3 className="mb-6 text-2xl font-medium">수상</h3>
-                <div className="rounded-xl bg-white p-6 shadow-sm border border-gray-100">
-                  <ul className="space-y-4">
-                    <AwardItem date="2024.11" title="공모전 장려상 (한국관광공사)" />
-                    <AwardItem date="2024.11" title="프로젝트 우수상 (SSAFY)" />
-                    <AwardItem date="2024.10" title="프로젝트 우수상 (SSAFY)" />
-                    <AwardItem date="2024.05" title="프로젝트 우수상 (SSAFY)" />
-                  </ul>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="mb-6 text-2xl font-medium">논문</h3>
-                <div className="rounded-xl bg-white p-6 shadow-sm border border-gray-100">
-                  <ul className="space-y-4">
-                    <li>
-                      <div className="text-sm font-medium text-gray-500">2023.05</div>
-                      <div className="text-gray-800">
-                        카메라 및 관성 측정 장치 융합을 활용한 딥러닝 기반 수작업 조립 공정 작업자 동작 인식 방법론 개발
-                      </div>
-                      <a
-                        href="/paper.pdf"
-                        target="_blank"
-                        className="mt-2 inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
-                        rel="noreferrer"
-                      >
-                        논문 보기
-                        <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

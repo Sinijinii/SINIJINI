@@ -20,18 +20,16 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Build
-        run: npm run build
+        run: npm run build && touch out/.nojekyll
         env:
           NODE_ENV: production
-
-      - name: Add .nojekyll file
-        run: touch out/.nojekyll
 
       - name: Fix path issues
         run: |
           cd out
-          find . -type f -name "*.html" -exec sed -i 's|href="/_next/|href="./next/|g' {} \;
-          find . -type f -name "*.html" -exec sed -i 's|src="/_next/|src="./next/|g' {} \;
+          find . -name "*.html" -exec sed -i 's|href="/_next/|href="./next/|g' {} \;
+          find . -name "*.html" -exec sed -i 's|src="/_next/|src="./next/|g' {} \;
+          cp -r _next next
           cd ..
 
       - name: Deploy to GitHub Pages

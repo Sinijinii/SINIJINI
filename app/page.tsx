@@ -14,7 +14,7 @@ import IntegratedProjectCard from "@/components/integrated-project-card"
 import AboutTestimonials from "@/components/about-testimonials"
 import NavigationMenu from "@/components/navigation-menu"
 
-
+import { projects } from "@/data/projects"
 
 
 export default function Home() {
@@ -63,94 +63,6 @@ export default function Home() {
     return () => clearInterval(interval)
   }, [roles.length])
 
-
-  // 프로젝트 데이터
-  const projects = [
-    {
-      id: "gangwon-travel",
-      title: "모두의 취향을 고려한 강원도 여행 코스 추천 서비스",
-      description: "개인과 그룹의 여행 성향을 분석하여 최적화된 강원도 여행 코스를 추천하는 서비스입니다.",
-      image: "/project/maumkkut/main.png?height=300&width=500",
-      frontendTech: [],
-      backendTech: ["Django REST Framework", "MySQL", "Kakao Maps API"],
-      aiTech: ["K-평균 클러스터링", "Cosine Similarity", "경로 최적화 알고리즘"],
-      categories: ["backend", "ai"],
-    },
-    {
-      id: "sign-language-translator",
-      title: "손누리: 웹서핑이 힘든 청각장애인들을 위한 한국어-수어 통역 서비스",
-      description:
-        "청각장애인의 웹 서비스 접근성을 개선하기 위해 실시간 한국어-수어 번역과 자연스러운 수어 영상을 제공하는 서비스입니다.",
-      image: "/project/sonuri/main.png?height=300&width=500",
-      frontendTech: ["React", "CSS3", "HTML5"],
-      backendTech: [],
-      aiTech: ["GPT", "형태소 분석기", "벡터 데이터베이스", "Semantic Search"],
-      categories: ["frontend", "ai"],
-    },
-    {
-      id: "zoozoo-fin",
-      title: "주주핀 ZooZooFin - 금융 교육 게임 앱",
-      description:
-        "금융 지식이 부족한 사용자가 육성형 게임을 통해 자산 관리와 투자 전략을 재미있고 효과적으로 배울 수 있는 핀테크 게임 앱 서비스입니다.",
-      image: "/project/zoozoofin/main.png?height=300&width=500",
-      frontendTech: ["React.js", "Recharts", "CSS Modules"],
-      backendTech: ["Node.js", "Express", "MongoDB"],
-      aiTech: ["LSTM", "KR-FinBERT-SC", "주가 패턴 예측"],
-      categories: ["frontend", "ai"],
-    },
-    {
-      id: "clothes-memory",
-      title: "기웃기옷 - 옷 기억도 분석 서비스",
-      description:
-        "사용자가 입으려는 옷이 주변 사람들에게 얼마나 기억에 남는지 분석하고, 더 나은 스타일 선택을 지원하는 서비스입니다.",
-      image: "/project/giutgiot/main.png?height=300&width=500",
-      frontendTech: ["Flutter", "OAuth", "Chart library"],
-      backendTech: [],
-      aiTech: ["CNN-LSTM", "Pyannote", "SVM", "이미지 인식"],
-      categories: ["frontend", "ai"],  // 백엔드, AI에서 프론트엔드, AI로 수정
-    },
-    {
-      id: "ott-movie-recommender",
-      title: "OTT 정보 및 커뮤니티 기반 영화 추천 서비스",
-      description: "OTT별 영화 정보를 제공하고, 코사인 유사도 기반 추천, CNN 닮은꼴 배우 추천, 생성형 AI 포스터 제작을 결합한 영화 추천 커뮤니티 플랫폼입니다.",
-      image: "/project/motis/main.png?height=300&width=500",
-      frontendTech: ["Flutter", "OAuth", "Chart library"],
-      backendTech: [],
-      aiTech: ["Tensorflow", "Django", "Pandas", "NumPy", "OpenCV", "Cosine Similarity", "CNN"],
-      categories: ["frontend", "ai", "backend"],  // 백엔드, AI에서 프론트엔드, AI로 수정
-    },
-    {
-      id: "assembly-motion-recognition",
-      title: "멀티모달 딥러닝 기반 작업자 동작 인식 시스템",
-      description: "센서 데이터와 영상 데이터를 융합한 멀티모달 딥러닝으로 작업자 동작 인식 및 패턴 분석을 수행하는 시스템입니다.",
-      image: "/project/cn1/main.png?height=300&width=500",
-      frontendTech: ["Android Studio", "Flutter", "BLE"],
-      backendTech: [],
-      aiTech: ["CNN", "LSTM", "PrefixSpan", "TensorFlow"],
-      categories: ["frontend", "ai"],
-    },
-    {
-      id: "posture-recognition-app",
-      title: "멀티모달 딥러닝 기반 실시간 자세 인식 앱",
-      description: "핸드폰 센서와 영상 데이터를 융합하여 사용자의 자세를 93.65% 정확도로 인식하고, RabbitMQ 서버를 통해 실시간으로 데이터를 전송하는 Flutter 기반 앱입니다.",
-      image: "/project/cn2/main.png?height=300&width=500",
-      frontendTech: ["Flutter", "Dart", "RabbitMQ", "Firebase"],
-      backendTech: [],
-      aiTech: ["3D CNN", "LSTM", "1D CNN", "TensorFlow"],
-      categories: ["frontend", "ai"],
-    },
-    {
-      id: "infant-health-monitoring",
-      title: "영유아 스마트 밴드 데이터 기반 건강 분석 및 웹 보고서",
-      description: "스마트 밴드로 수집한 영유아 활동 데이터를 K-means와 Z-Score 기반으로 분석하고, 맞춤형 권장 운동량을 제공하는 웹 보고서 서비스입니다.",
-      image: "/project/kids/main.png?height=300&width=500",
-      frontendTech: ["Django", "HTML/CSS", "JavaScript", "Chart.js"],
-      backendTech: [],
-      aiTech: ["K-Means", "Z-Score", "Scikit-learn", "Pandas"],
-      categories: ["frontend", "ai"],
-    }
-  ]
-  
 
   // 필터링된 프로젝트
   const filteredProjects =
@@ -215,7 +127,7 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             className="mb-16 text-4xl font-light md:text-5xl"
           >
-            About me
+            {/* About me */}
           </motion.h2>
 
           <div className="mx-auto max-w-6xl">
@@ -241,14 +153,14 @@ export default function Home() {
                   >
                     GitHub
                   </a>
-                  <a
+                  {/* <a
                     href="https://velog.io"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="rounded-md bg-gray-800 px-4 py-2 text-sm text-white transition-colors hover:bg-gray-700"
                   >
                     Velog
-                  </a>
+                  </a> */}
                 </div>
               </motion.div>
 
@@ -315,12 +227,13 @@ export default function Home() {
                 >
                   <h4 className="mb-3 text-lg font-medium">Q. 다양한 개발 영역에 관심을 갖게 된 계기는?</h4>
                   <p className="text-gray-600">
-                    처음에는 프론트엔드 개발로 시작했지만, 사용자에게 더 나은 경험을 제공하기 위해서는 백엔드와의
-                    효율적인 통신과 데이터 처리가 중요하다는 것을 깨달았습니다.
+                    처음에는 AI 모델 개발부터 시작해 정확도를 높이는 데 집중했습니다.<br/>
+                    그 과정에서, 결과물을 실제 사용자에게 제공해보고 싶다는 생각이 들었습니다.
                   </p>
                   <p className="mt-2 text-gray-600">
-                    이후 <strong className="text-gray-800">AI 기술이 사용자 경험을 혁신적으로 변화</strong>시킬 수
-                    있다는 가능성에 매료되어, 세 영역을 모두 학습하게 되었습니다.
+                  단순히 모델의 성능을 높이는 것을 넘어,  
+                  <strong className="text-gray-800"> 사용자가 실제로 사용할 수 있는 서비스로 구현하기 위해</strong> 개발 역량의 필요성을 느꼈습니다.  
+                  이후 프론트엔드와 백엔드 기술을 공부하며, 세 영역을 모두 학습하게 되었습니다.
                   </p>
                 </motion.div>
 
@@ -333,12 +246,15 @@ export default function Home() {
                 >
                   <h4 className="mb-3 text-lg font-medium">Q. 세 가지 영역을 어떻게 통합하여 개발하나요?</h4>
                   <p className="text-gray-600">
-                    <strong className="text-gray-800">사용자 중심의 설계</strong>를 기반으로, 프론트엔드에서는 직관적인
-                    UI/UX를 구현하고, 백엔드에서는 안정적이고 확장 가능한 API를 설계합니다.
+                    세 가지 영역은 <strong className="text-gray-800">사용자 관점에서 하나의 흐름으로 이어지도록 통합</strong>합니다.<br/>
+                    프론트엔드에서는 사용자가 쉽게 이해하고 조작할 수 있는 UI를 구성하고,  <br/>
+                    백엔드에서는 AI 모델과 데이터를 연결하는 API를 설계해 기능이 원활하게 동작하도록 만듭니다.  <br/>
+                    여기에 AI 기술을 접목하여 사용자 데이터를 분석하고 개인화된 경험을 제공합니다.
                   </p>
+
                   <p className="mt-2 text-gray-600">
-                    여기에 AI 기술을 접목하여 사용자 데이터를 분석하고 개인화된 경험을 제공합니다. 이렇게 세 영역을
-                    유기적으로 연결합니다.
+                    <strong className="text-gray-800">사용자 중심의 설계</strong>를 기반으로,  
+                    각 영역이 끊김 없이 연결되어 하나의 완성된 서비스로 작동하도록 개발합니다.
                   </p>
                 </motion.div>
 
@@ -378,7 +294,7 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             className="mb-16 text-4xl font-light md:text-5xl"
           >
-            기술 통합 접근법
+            {/* 기술 통합 접근법 */}
           </motion.h2>
 
           <div className="mx-auto max-w-5xl">
@@ -418,25 +334,25 @@ export default function Home() {
                   <ProcessStep
                     number="01"
                     title="사용자 중심 설계"
-                    description="프론트엔드, 백엔드, AI 관점에서 사용자 요구사항을 종합적으로 분석하고 설계합니다."
+                    description="프론트엔드, 백엔드, AI 관점에서 사용자 요구사항을 종합적으로 분석하고, 전반적인 서비스 구조를 설계합니다."
                   />
 
                   <ProcessStep
                     number="02"
-                    title="프로토타입 개발"
-                    description="프론트엔드 인터페이스와 백엔드 API를 동시에 개발하며, AI 모델 통합을 위한 기반을 마련합니다."
+                    title="개발 구조 구축"
+                    description="프론트엔드 UI와 백엔드 API를 동시에 개발하며, AI 모델이 통합될 수 있는 구조적 기반을 마련합니다."
                   />
 
                   <ProcessStep
                     number="03"
                     title="AI 모델 통합"
-                    description="사용자 데이터를 활용한 AI 모델을 개발하고, 프론트엔드와 백엔드에 유기적으로 연결합니다."
+                    description="사용자 데이터를 바탕으로 AI 모델을 개발하고, 전체 서비스 흐름에 맞춰 기능을 유기적으로 연결합니다."
                   />
 
                   <ProcessStep
                     number="04"
                     title="최적화 및 개선"
-                    description="사용자 피드백과 데이터 분석을 바탕으로 세 영역을 지속적으로 최적화하고 개선합니다."
+                    description="사용자 피드백과 실제 사용 데이터를 바탕으로 전체 시스템을 지속적으로 개선하고 고도화합니다."
                   />
                 </div>
               </div>
@@ -456,7 +372,7 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             className="mb-16 text-4xl font-light md:text-5xl"
           >
-            Skill & Tools
+            {/* Skill & Tools */}
           </motion.h2>
 
           <div className="mx-auto max-w-4xl">
@@ -581,12 +497,15 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             className="mb-16 text-4xl font-light md:text-5xl"
           >
-            Education & Experience
+            {/* Education & Experience */}
           </motion.h2>
 
-          <div className="mx-auto max-w-4xl">
+          {/* ✨ 2단 그리드로 변경 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            
+            {/* 왼쪽: 커리어 타임라인 */}
             <div className="relative space-y-12 pl-8 before:absolute before:left-0 before:top-2 before:h-full before:w-0.5 before:bg-gray-300">
-              
+            <h3 className="mb-6 text-2xl font-medium">Education & Experience</h3>
               <EducationItem
                 period="2024.01 ~ 2024.12"
                 institution="삼성 청년 SW 아카데미 11기"
@@ -597,55 +516,33 @@ export default function Home() {
                 company="차세대융합기술연구원"
                 position="산업지능연구실"
                 description={[
-                  "Photoshop을 활용해 홍보 랜딩 페이지, 웹 디자인 작업",
-                  "HTML, CSS 활용해 웹 표준 접근성에 신경쓰며 자사 및 타사 웹 사이트 퍼블리싱",
-                  "인공지능 기반 영유아 안전보육 시스템 개발",
-                  "작업자 동작 분석 및 이상 탐지 시스템 개발",
+                  "관성 센서-카메라 융합 작업자 동작 인식 모델 개발",
+                  "작업 패턴 모델 기반 실시간 작업 이상 탐지 알고리즘 개발",
+                  "작업자의 위험을 감지하기 위한 멀티모달 딥러닝 기반 작업자 자세 인식 모델 개발",
+                  "RabbitMQ 기반 실시간 데이터 처리 및 전송 시스템 구축",
                 ]}
               />
-
               <CareerItem
                 period="2021.10 ~ 2022.06"
                 company="차세대융합기술연구원"
                 position="기술기획팀"
                 description={[
                   "인공지능 기반 영유아 안전보육 시스템 개발",
-                  "Photoshop, Illustrator를 활용해 홍보물 디자인 작업",
-                  "HTML, CSS 활용해 웹 표준 접근성에 신경쓰며 자사 및 타사 웹 사이트 퍼블리싱",
+                  "영유아 센서 데이터 실시간 수집 및 전처리",
+                  "영유아 이상 탐지 알고리즘 개발",
+                  "학부모, 교사용 웹 보고서 개발"
                 ]}
               />
-
               <EducationItem
                 period="2017.03 ~ 2021.18"
                 institution="산업데이터사이언스전공"
                 description=""
               />
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Awards 섹션 */}
-      <section id="awards" className="min-h-screen py-20">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
-            className="mb-16 text-4xl font-light md:text-5xl"
-          >
-            Awards & Papers
-          </motion.h2>
-
-          <div className="mx-auto max-w-4xl">
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7 }}
-              >
+            {/* 오른쪽: 수상 + 논문 */}
+            <div className="space-y-12">
+              <div>
                 <h3 className="mb-6 text-2xl font-medium">수상</h3>
                 <div className="rounded-xl bg-white p-6 shadow-sm border border-gray-100">
                   <ul className="space-y-4">
@@ -655,14 +552,9 @@ export default function Home() {
                     <AwardItem date="2024.05" title="프로젝트 우수상 (SSAFY)" />
                   </ul>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-              >
+              <div>
                 <h3 className="mb-6 text-2xl font-medium">논문</h3>
                 <div className="rounded-xl bg-white p-6 shadow-sm border border-gray-100">
                   <ul className="space-y-4">
@@ -678,29 +570,21 @@ export default function Home() {
                         rel="noreferrer"
                       >
                         논문 보기
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="ml-1 h-4 w-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                          />
+                        <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
                       </a>
                     </li>
                   </ul>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
+
 
       {/* 고정 네비게이션 */}
       <div className="fixed bottom-8 right-8 flex flex-col gap-4">

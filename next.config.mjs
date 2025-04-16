@@ -18,8 +18,8 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
   output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ? `/${repo}` : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? `/${repo}/` : '',
+  // basePath: process.env.NODE_ENV === 'production' ? `/${repo}` : '',
+  // assetPrefix: process.env.NODE_ENV === 'production' ? `/${repo}/` : '',
   trailingSlash: true,
   images: {
     unoptimized: true,

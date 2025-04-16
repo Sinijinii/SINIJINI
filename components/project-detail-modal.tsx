@@ -1,8 +1,7 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { X, Code, Database, Brain, ExternalLink, Github, TrendingUp, Wrench } from "lucide-react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
@@ -20,17 +19,17 @@ interface ProjectDetailProps {
     result: string
     github?: string
     demo?: string
+    images?: string[]
     frontend?: {
       description: string
       responsibilities: string[]
       tech: string[]
-      features?: string[] // 옵셔널로 변경
+      features?: string[]
       images?: string[]
-      wireframes?: string[]
       troubleshooting?: {
         problem: string
         solution: string
-        result: string
+        result?: string
       }[]
       growth?: string[]
     }
@@ -38,12 +37,15 @@ interface ProjectDetailProps {
       description: string
       responsibilities: string[]
       tech: string[]
-      features?: string[] // 옵셔널로 변경
+      features?: string[]
+      images?: string[]
       architecture?: string
+      architectureImage?: string
+      architectureImageCaption?: string
       troubleshooting?: {
         problem: string
         solution: string
-        result: string
+        result?: string
       }[]
       growth?: string[]
     }
@@ -51,13 +53,16 @@ interface ProjectDetailProps {
       description: string
       responsibilities: string[]
       tech: string[]
-      models?: string[] // 옵셔널로 변경
+      models?: string[]
+      images?: string[]
       dataProcessing?: string
       evaluation?: string
+      modelDiagram?: string
+      modelDiagramCaption?: string
       troubleshooting?: {
         problem: string
         solution: string
-        result: string
+        result?: string
       }[]
       growth?: string[]
     }
@@ -66,8 +71,25 @@ interface ProjectDetailProps {
   onClose: () => void
 }
 
+
 export default function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailProps) {
   const [activeTab, setActiveTab] = useState<"overview" | "frontend" | "backend" | "ai">("overview")
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+      document.documentElement.style.overflow = "hidden" // ← 추가!
+    } else {
+      document.body.style.overflow = "auto"
+      document.documentElement.style.overflow = "auto"
+    }
+  
+    return () => {
+      document.body.style.overflow = "auto"
+      document.documentElement.style.overflow = "auto"
+    }
+  }, [isOpen])
+  
 
   // 각 직무 탭이 있는지 확인
   const hasFrontend = !!project.frontend
@@ -175,32 +197,53 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
 
             {/* 탭 콘텐츠 */}
             <div className="max-h-[calc(95vh-330px)] overflow-y-auto p-6">
-              {activeTab === "overview" && (
-                <div className="space-y-6">
-                  {project.planning && (
-                    <div>
-                      <h3 className="mb-2 text-xl font-medium">기획 배경</h3>
-                      <p className="text-gray-600">{project.planning}</p>
-                    </div>
-                  )}
+            {activeTab === "overview" && (
+              <div className="space-y-6">
+                {project.planning && (
                   <div>
-                    <h3 className="mb-2 text-xl font-medium">프로젝트 개요</h3>
-                    <p className="text-gray-600">{project.overview}</p>
+                    <h3 className="mb-2 text-xl font-medium">기획 배경</h3>
+                    <p className="text-gray-600">{project.planning}</p>
                   </div>
-                  <div>
-                    <h3 className="mb-2 text-xl font-medium">도전 과제</h3>
-                    <p className="text-gray-600">{project.challenge}</p>
-                  </div>
-                  <div>
-                    <h3 className="mb-2 text-xl font-medium">해결 방법</h3>
-                    <p className="text-gray-600">{project.solution}</p>
-                  </div>
-                  <div>
-                    <h3 className="mb-2 text-xl font-medium">결과</h3>
-                    <p className="text-gray-600">{project.result}</p>
-                  </div>
+                )}
+
+                <div>
+                  <h3 className="mb-2 text-xl font-medium">프로젝트 개요</h3>
+                  <p className="text-gray-600">{project.overview}</p>
                 </div>
-              )}
+
+                {/* ✨ 이미지 섹션 추가 */}
+                {project.images && project.images.length > 0 && (
+                  <div className="pt-2">
+                    <h3 className="mb-4 text-xl font-medium">대표 이미지</h3>
+                    <div className="space-y-6">
+                      {project.images.map((img, index) => (
+                        <div key={index} className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
+                          <Image
+                            src={img || "/placeholder.svg"}
+                            alt={`프로젝트 대표 이미지 ${index + 1}`}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div>
+                  <h3 className="mb-2 text-xl font-medium">도전 과제</h3>
+                  <p className="text-gray-600">{project.challenge}</p>
+                </div>
+                <div>
+                  <h3 className="mb-2 text-xl font-medium">해결 방법</h3>
+                  <p className="text-gray-600">{project.solution}</p>
+                </div>
+                <div>
+                  <h3 className="mb-2 text-xl font-medium">결과</h3>
+                  <p className="text-gray-600">{project.result}</p>
+                </div>
+              </div>
+            )}
 
               {activeTab === "frontend" && project.frontend && (
                 <div className="space-y-8">
@@ -210,6 +253,26 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                       <h3 className="mb-2 text-xl font-medium">프론트엔드 개발 개요</h3>
                       <p className="text-gray-600">{project.frontend.description}</p>
                     </div>
+
+                    {/* 프론트엔드 이미지 섹션 추가 */}
+                    {project.frontend.images && project.frontend.images.length > 0 && (
+                      <div className="pt-2">
+                        <h3 className="mb-4 text-xl font-medium">프론트엔드 구현 이미지</h3>
+                        <div className="space-y-6">
+                          {project.frontend.images.map((img, index) => (
+                            <div key={index} className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
+                              <Image
+                                src={img || "/placeholder.svg?height=400&width=900"}
+                                alt={`프론트엔드 이미지 ${index + 1}`}
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
                     <div>
                       <h3 className="mb-2 text-xl font-medium">담당 업무</h3>
                       <ul className="list-inside list-disc space-y-1 text-gray-600">
@@ -255,8 +318,13 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                             <h4 className="mb-2 font-medium text-blue-600">해결 방법</h4>
                             <p className="mb-4 text-gray-700">{item.solution}</p>
 
-                            <h4 className="mb-2 font-medium text-green-600">결과</h4>
-                            <p className="text-gray-700">{item.result}</p>
+                            {/* 결과가 있을 때만 렌더링 */}
+                            {item.result && (
+                              <>
+                                <h4 className="mb-2 font-medium text-green-600">결과</h4>
+                                <p className="text-gray-700">{item.result}</p>
+                              </>
+                            )}
                           </div>
                         ))}
                       </div>
@@ -283,7 +351,7 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                     </div>
                   )}
 
-                  {/* 화면 설계 */}
+                  {/* 화면 설계
                   {project.frontend.wireframes && project.frontend.wireframes.length > 0 && (
                     <div className="border-t border-gray-200 pt-8">
                       <h3 className="mb-4 text-xl font-medium">작업 화면</h3>
@@ -307,7 +375,7 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                         통해 지속적으로 개선되었습니다.
                       </p>
                     </div>
-                  )}
+                  )} */}
                 </div>
               )}
 
@@ -319,6 +387,26 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                       <h3 className="mb-2 text-xl font-medium">백엔드 개발 개요</h3>
                       <p className="text-gray-600">{project.backend.description}</p>
                     </div>
+
+                    {/* 백엔드 이미지 섹션 추가 */}
+                    {project.backend.images && project.backend.images.length > 0 && (
+                      <div className="pt-2">
+                        <h3 className="mb-4 text-xl font-medium">백엔드 구현 이미지</h3>
+                        <div className="space-y-6">
+                          {project.backend.images.map((img, index) => (
+                            <div key={index} className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
+                              <Image
+                                src={img || "/placeholder.svg?height=400&width=900"}
+                                alt={`백엔드 이미지 ${index + 1}`}
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
                     <div>
                       <h3 className="mb-2 text-xl font-medium">담당 업무</h3>
                       <ul className="list-inside list-disc space-y-1 text-gray-600">
@@ -343,6 +431,29 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                         <p className="text-gray-600">{project.backend.architecture}</p>
                       </div>
                     )}
+
+
+
+                    {/* 아키텍처 이미지 추가 */}
+                    {project.backend.architectureImage && (
+                      <div className="pt-2">
+                        <div className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
+                          <Image
+                            src={project.backend.architectureImage || "/placeholder.svg?height=400&width=900"}
+                            alt="시스템 아키텍처 다이어그램"
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                        {project.backend.architectureImageCaption && (
+                          <p className="mt-2 text-center text-sm text-gray-500">
+                            {project.backend.architectureImageCaption}
+                          </p>
+                        )}
+                      </div>
+                    )}
+
+
                     <div>
                       <h3 className="mb-2 text-xl font-medium">사용 기술</h3>
                       <div className="flex flex-wrap gap-2">
@@ -371,8 +482,13 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                             <h4 className="mb-2 font-medium text-blue-600">해결 방법</h4>
                             <p className="mb-4 text-gray-700">{item.solution}</p>
 
-                            <h4 className="mb-2 font-medium text-green-600">결과</h4>
-                            <p className="text-gray-700">{item.result}</p>
+                            {/* 결과가 있을 때만 렌더링 */}
+                            {item.result && (
+                              <>
+                                <h4 className="mb-2 font-medium text-green-600">결과</h4>
+                                <p className="text-gray-700">{item.result}</p>
+                              </>
+                            )}
                           </div>
                         ))}
                       </div>
@@ -409,6 +525,28 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                       <h3 className="mb-2 text-xl font-medium">AI/ML 개발 개요</h3>
                       <p className="text-gray-600">{project.ai.description}</p>
                     </div>
+
+
+                    {/* AI 이미지 섹션 추가 */}
+                    {project.ai.images && project.ai.images.length > 0 && (
+                      <div className="pt-2">
+                        <h3 className="mb-4 text-xl font-medium">AI/ML 구현 이미지</h3>
+                        <div className="space-y-6">
+                          {project.ai.images.map((img, index) => (
+                            <div key={index} className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
+                              <Image
+                                src={img || "/placeholder.svg?height=400&width=900"}
+                                alt={`AI/ML 이미지 ${index + 1}`}
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+
                     <div>
                       <h3 className="mb-2 text-xl font-medium">담당 업무</h3>
                       <ul className="list-inside list-disc space-y-1 text-gray-600">
@@ -467,8 +605,13 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                             <h4 className="mb-2 font-medium text-blue-600">해결 방법</h4>
                             <p className="mb-4 text-gray-700">{item.solution}</p>
 
-                            <h4 className="mb-2 font-medium text-green-600">결과</h4>
-                            <p className="text-gray-700">{item.result}</p>
+                            {/* 결과가 있을 때만 렌더링 */}
+                            {item.result && (
+                              <>
+                                <h4 className="mb-2 font-medium text-green-600">결과</h4>
+                                <p className="text-gray-700">{item.result}</p>
+                              </>
+                            )}
                           </div>
                         ))}
                       </div>

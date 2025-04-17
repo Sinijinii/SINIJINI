@@ -27,7 +27,7 @@ export default function IntegratedProjectCard({
 }: IntegratedProjectCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
-
+  const prefix = process.env.NODE_ENV === "production" ? "/SINIJINI" : "";
   const projectData = projects.find((p) => p.id === projectId)
 
   if (!projectData) {
@@ -53,7 +53,7 @@ export default function IntegratedProjectCard({
         {/* 이미지 영역 */}
         <div className="relative h-56 overflow-hidden">
           <Image
-            src={image}
+            src={image ? `${prefix}${image}` : "/placeholder.svg?height=300&width=1000"}
             alt={title}
             fill
             className={`object-cover transition-transform duration-700 ${isHovered ? "scale-105" : "scale-100"}`}

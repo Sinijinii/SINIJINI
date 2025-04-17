@@ -67,7 +67,7 @@ export default function AboutTestimonials() {
     if (!isPaused) {
       intervalRef.current = setInterval(() => {
         setActiveIndex((prev) => (prev + 1) % testimonials.length)
-      }, 5000) // 5초마다 슬라이드 변경
+      }, 2000) // 5초마다 슬라이드 변경
     }
 
     return () => {

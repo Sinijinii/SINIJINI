@@ -362,12 +362,12 @@ export default function Home() {
                         카메라 및 관성 측정 장치 융합을 활용한 딥러닝 기반 수작업 조립 공정 작업자 동작 인식 방법론 개발
                       </div>
                       <a
-                        href="/paper.pdf"
-                        target="_blank"
-                        className="mt-2 inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
-                        rel="noreferrer"
-                      >
-                        논문 보기
+                          href={`${prefix}/paper.pdf`}
+                          target="_blank"
+                          className="mt-2 inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
+                          rel="noreferrer"
+                        >
+                          논문 보기
                         <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                             d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

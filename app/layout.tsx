@@ -3,13 +3,13 @@ import type { Metadata } from "next"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
-  title: "시니지니 포트폴리오",
+  title: "시니지니 포트폴리오",
   description: "AI/프론트/백엔드 개발 경험을 담은 포트폴리오입니다.",
   openGraph: {
     title: "시니지니 포트폴리오",
     description: "AI/프론트/백엔드 개발 경험을 담은 포트폴리오입니다.",
     url: "https://sinijinii.github.io/SINIJINI/",
-    siteName: "신희진 포트폴리오",
+    siteName: "시니지니 포트폴리오",
     images: [
       {
         url: "https://sinijinii.github.io/SINIJINI/Thumbnail/Thumbnail.png?v=5", // v=5 캐시 우회용

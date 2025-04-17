@@ -28,8 +28,8 @@ export default function RootLayout({
         {/* open Graph 메타 태그 */}
         <meta property="og:title" content="신희진 포트폴리오" />
         <meta property="og:description" content="AI/프론트/백엔드 개발 경험을 담은 포트폴리오입니다." />
-        <meta property="og:image" content="https://sinijinii.github.io/Thumbnail/Thumbnail.png" />
-        <meta property="og:url" content="https://sinijinii.github.io" />
+        <meta property="og:image" content="https://sinijinii.github.io/SINIJINI/Thumbnail/Thumbnail.png" />
+        <meta property="og:url" content="https://sinijinii.github.io/SINIJINI/" />
         <meta property="og:type" content="website" />
       </head>
       <body>

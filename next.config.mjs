@@ -11,7 +11,7 @@ try {
   }
 }
 
-const repo = 'SINJIJII'; // GitHub 저장소 이름
+
 
 const isProd = process.env.NODE_ENV === 'production';
 /** @type {import('next').NextConfig} */

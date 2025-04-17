@@ -22,6 +22,7 @@ export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false)
   const [activeProjectFilter, setActiveProjectFilter] = useState("all")
   const containerRef = useRef(null)
+  const prefix = process.env.NODE_ENV === "production" ? "/SINIJINI" : "";
 
   // 스크롤 위치에 따라 활성 섹션 업데이트
   useEffect(() => {
@@ -142,11 +143,11 @@ export default function Home() {
                 className="flex flex-col items-center justify-center"
               >
                 <div className="relative h-80 w-80 overflow-hidden rounded-full border-4 border-white shadow-lg">
-                  <Image src="/profile.jpg" alt="신희진" fill className="w-full h-full object-cover object-top" />
+                  <Image src={`${prefix}/profile.jpg`} alt="신희진" fill className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="mt-6 flex justify-center gap-4">
                   <a
-                    href="https://github.com"
+                    href="https://github.com/Sinijinii"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="rounded-md bg-gray-800 px-4 py-2 text-sm text-white transition-colors hover:bg-gray-700"

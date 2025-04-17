@@ -90,6 +90,12 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
     }
   }, [isOpen])
   
+  useEffect(() => {
+    const content = document.querySelector(".max-h-[calc(95vh-330px)]")
+    if (content) {
+      content.scrollTop = 0
+    }
+  }, [activeTab])
 
   // 각 직무 탭이 있는지 확인
   const hasFrontend = !!project.frontend
@@ -246,7 +252,7 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
               </div>
             )}
 
-{activeTab === "ai" && project.ai && (
+            {activeTab === "ai" && project.ai && (
                 <div className="space-y-8">
                   {/* 주요 내용 */}
                   <div className="space-y-6">

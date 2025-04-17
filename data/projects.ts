@@ -76,8 +76,6 @@ export const projects = [
   description: "GPT와 형태소 분석기 기반 한국어-수어 번역 알고리즘을 구현하고, 수어 사전 확장과 실시간 성능 최적화를 통해 웹 접근성을 향상시킨 AI 기반 수어 통역 서비스입니다.",
   image: "/project/sonuri/main.png?height=300&width=500",
   images:["/project/sonuri/result.png"],
-  frontendTech: ["React"],
-  backendTech: ["FastAPI"],
   aiTech: ["GPT", "형태소 분석기", "벡터 데이터베이스", "Semantic Search"],
   overview:
     "청각장애인을 위한 웹 접근성 개선을 목표로, 한국어 문장을 수어 문법으로 번역하고, 새로운 수어 표현을 생성하는 AI 기반 서비스입니다.",
@@ -138,8 +136,7 @@ export const projects = [
     image: "/project/zoozoofin/main.png?height=300&width=500",
     images:["/project/zoozoofin/result.png"],
     frontendTech: ["React.js", "Recharts", "CSS Modules"],
-    backendTech: ["Flask"],
-    aiTech: ["LSTM", "KR-FinBERT-SC"],
+    aiTech: ["LSTM", "KR-FinBERT-SC","Flask"],
     overview: "주가 예측, 감정 분석, 재무제표 분석을 결합한 AI 기반 금융 힌트 시스템과 퀴즈 학습을 통해 금융 지식을 쉽게 습득할 수 있도록 구성된 게임 서비스입니다.",
     planning:
       "금융 교육의 진입 장벽을 낮추고 젊은 세대의 금융 이해도를 높이기 위해 게임 요소를 활용한 교육 서비스를 기획했습니다. 사용자 조사 결과, 많은 사람들이 금융 지식의 필요성은 인식하지만 학습 과정이 지루하고 어렵다고 느끼는 것을 확인했습니다. 이에 캐릭터 육성, 퀘스트 수행, 보상 시스템 등 게임적 요소를 통해 금융 학습 동기를 부여하는 서비스를 설계했습니다.",
@@ -221,8 +218,7 @@ export const projects = [
     image: "/project/giutgiot/main.png?height=300&width=500",
     images:["/project/giutgiot/result.png"],
     frontendTech: ["Flutter", "OAuth", "Chart library"],
-    backendTech: ["Flask"],
-    aiTech: ["CNN-LSTM", "Pyannote", "SVM", "아이트래킹", "Naive Bayes"],
+    aiTech: ["CNN-LSTM", "Pyannote", "SVM", "아이트래킹", "Naive Bayes","Flask"],
     overview:
       "기웃기옷은 사용자의 의상이 타인에게 얼마나 기억에 남는지를 분석하여 더 효과적인 스타일링을 지원하는 서비스입니다. 특히 중요한 미팅이나 면접 등 인상이 중요한 상황에서 최적의 의상 선택을 돕는 것이 목표입니다.",
     planning:
@@ -305,40 +301,43 @@ export const projects = [
     solution: "코사인 유사도 기반의 추천 알고리즘에 사용자 선호 장르 가중치를 적용해 직관성과 다양성을 확보했으며, CNN 기반 얼굴 유사도 모델을 통해 닮은꼴 배우 추천 기능을 구현했습니다. 생성형 AI를 통해 입력 키워드 기반의 커스텀 포스터를 제공해 사용자 흥미를 유도했습니다.",
     result: "기존 추천 서비스보다 시각적 매력과 인터랙션 요소가 강화되었고, 사용자 피드백을 통해 만족도와 콘텐츠 참여율이 높아졌습니다. 추천 결과에 대한 설명이 가능해 사용자 신뢰도도 증가했습니다.",
     ai: {
+      images:["/project/motis/ai1.png","/project/motis/ai2.png","/project/motis/ai3.png"],
       description: "코사인 유사도 기반 추천, CNN 모델 기반 닮은꼴 배우 추천, 생성형 AI 포스터 생성 기능을 개발하고 Django로 모델 서빙을 담당했습니다.",
       responsibilities: [
         "장르, 감독, 배우 메타데이터를 활용한 영화 간 유사도 계산 및 추천 알고리즘 설계",
         "CNN 기반 얼굴 특징 추출 및 배우 데이터셋 매칭을 통한 닮은꼴 배우 추천 모델 개발",
         "사용자 키워드 기반의 생성형 AI 포스터 생성 기능 구현",
-        "Flask 기반 AI 서빙 서버 구성 및 Vue와 연동되는 API 응답 구조 설계"
+        "Django 기반 AI 서빙 서버 구성 및 Vue와 연동되는 API 응답 구조 설계"
       ],
       tech: ["Tensorflow", "Django", "Pandas", "NumPy", "OpenCV", "Cosine Similarity", "CNN"],
       troubleshooting: [
         {
           problem: "사용자 얼굴 입력 이미지의 해상도 및 배경 다양성으로 인해 CNN 특성 추출 정확도가 저하되었습니다.",
           solution: "이미지 전처리 단계에서 얼굴 탐지 및 정렬, 밝기 정규화 과정을 도입하여 입력 통일시켰습니다.",
-          result: "배우 추천 정확도 향상 및 사용자 피드백 기반 추천 납득도 증가하였습니다."
+        
         },
         {
           problem: "추천 로직에서 유사도 기반 추천 결과가 반복되거나 직관적이지 않은 문제가 발생했습니다.",
           solution: "코사인 유사도 외에 선호 장르 기반 가중치를 추가 적용해 복합 유사도 계산했습니다.",
-          result: "추천 다양성이 증가되었습니다."
+   
         }
       ],
       growth: [
-        "CNN 기반 얼굴 유사도 추정 모델링 및 사용자 입력 데이터 전처리 경험을 쌓았습니다.",
-        "Django 기반 AI 서버를 Vue.js 프론트엔드와 연동한 엔드포인트 설계 역량을 갖추게 되었습니다.",
-        "추천 알고리즘 성능 개선을 위한 피처 엔지니어링 및 유사도 보정 기법을 경험하며 추천 시스템에 대한 이해도를 높였습니다."
+        "CNN 기반 얼굴 유사도 추정 모델을 설계하고, 다양한 입력 데이터의 정규화를 경험하며 딥러닝 실전 적용 역량을 높였습니다.",
+        "Django 내에서 AI 모델 결과를 Vue.js 프론트와 연동하는 API 구조를 설계하며 엔드-투-엔드 시스템 개발 경험을 확장할 수 있었습니다.",
+        "영화 메타데이터 기반 추천 시스템의 다양성과 정밀도를 개선하기 위해 피처 엔지니어링과 유사도 가중치 보정을 적용하였고, 이를 통해 추천 알고리즘에 대한 실질적 이해도를 향상시켰습니다."
       ]
     },
     frontend: {
+      images:["/project/motis/fr1.png","/project/motis/back.png"],
       description: "Vue.js를 활용한 전체 UI 구현과 비동기 기반 댓글/좋아요 기능을 포함한 커뮤니티 기능 개발을 담당했습니다.",
       responsibilities: [
         "Vue.js 기반 영화 목록, 추천 결과, 닮은꼴 배우, 포스터 공유 등 주요 페이지 구현",
         "Django REST API와 연결된 좋아요, 댓글 기능 비동기 처리 구현",
-        "Serializer 기반 데이터 구조에 맞춰 Vue 컴포넌트 상태 설계 및 업데이트 흐름 구성"
+        "Serializer 기반 데이터 구조에 맞춰 Vue 컴포넌트 상태 설계 및 업데이트 흐름 구성",
+        "영화 상세 → 좋아요/댓글 → 커뮤니티 소통으로 이어지는 사용자 흐름을 고려해, 각 화면 간 연계 동선을 설계하고 구현"
       ],
-      tech: ["Vue.js", "Axios", "CSS Modules", "Django REST Framework"],
+      tech: ["Vue.js", "Axios", "Scoped CSS", "Django REST Framework"],
       troubleshooting: [
         {
           problem: "비동기 좋아요/댓글 기능에서 사용자 상태와 UI 반영 타이밍 불일치가 발생했습니다.",
@@ -347,19 +346,19 @@ export const projects = [
         }
       ],
       growth: [
-        "Vue.js를 활용한 SPA 구조 설계와 Django 기반 백엔드와의 연동 경험을 통해 프론트엔드 아키텍처에 대한 이해를 높였습니다.",
-        "비동기 처리 로직에서의 사용자 반응성과 UI 상태 일관성을 고려한 설계 경험을 통해 실무 역량을 강화할 수 있었습니다."
+        "Vue.js를 활용한 SPA 구조 설계와 Django 백엔드와의 API 연동 경험을 통해, 프론트엔드 아키텍처 및 데이터 흐름에 대한 실질적 이해를 높일 수 있었습니다.",
+        "비동기 처리 로직에서 사용자 반응성과 UI 상태의 일관성을 함께 고려하는 설계를 경험하며, 실무 수준의 UI 개발 역량을 강화할 수 있었습니다"
       ]
     },
     backend: {
-      description: "Django를 활용해 AI 모델과 프론트엔드를 연결하는 백엔드 API를 설계하고 구현했습니다.",
+      description: "Django 기반 RESTful API를 설계하고 AI 모델 결과를 프론트엔드에 안정적으로 전달하기 위한 데이터 흐름과 연동 구조를 구축하였습니다.",
       responsibilities: [
         "Django 기반 RESTful API 설계 및 모델 서빙 구조 구축",
         "Vue 프론트엔드와 연동되는 영화 추천, 배우 유사도, 포스터 생성 API 개발",
         "데이터베이스 스키마 설계 및 영화, 사용자 메타데이터 모델링",
         "인증, 요청 유효성 검사, 예외처리 로직 처리"
       ],
-      tech: ["Django", "Django REST Framework", "MySQL", "Gunicorn", "Nginx"],
+      tech: ["Django", "Django REST Framework", "SQLite"],
       features: [
         "유저 인증 및 세션 관리 기능 구현",
         "추천, 배우 분석, 포스터 생성에 대한 AI 결과 반환 API 개발",
@@ -367,14 +366,13 @@ export const projects = [
       ],
       troubleshooting: [
         {
-          problem: "AI 모델 결과가 예외적으로 빈 결과를 반환할 경우 시스템 오류 발생",
-          solution: "예외 처리 로직을 추가하여 fallback 메시지를 전송하도록 설계",
-          result: "사용자 경험을 해치지 않으며 안정적인 응답 유지"
+          problem: "AI 모델 추론 시간이 길어, 응답 대기 중 사용자 인터페이스가 멈춘 듯한 인상을 주는 문제가 발생함",
+          solution: "프론트엔드와 연동 시 로딩 UI를 추가하고, 요청 상태에 따라 사용자에게 진행 상황을 안내하는 메시지를 구현함",
         }
       ],
       growth: [
-        "Django와 AI 모델 간 연동 구조를 설계하면서 백엔드와 ML 파이프라인의 연결에 대한 이해를 높였습니다.",
-        "REST API 성능 최적화와 Vue 프론트와의 연동 경험을 통해 실전 서비스 구축 능력을 강화했습니다."
+        "Django와 외부 AI 모델 간의 데이터 연동 및 비동기 흐름을 구조적으로 설계하며, 백엔드-ML 파이프라인 통합 설계 역량을 키울 수 있었습니다.",
+        "REST API 성능 개선과 프론트엔드(Vue)와의 비동기 연동 경험을 통해 엔드 투 엔드 서비스 아키텍처 설계 능력을 강화할 수 있었습니다."
       ]
     },
     categories: ["ai", "frontend","backend"]
@@ -388,20 +386,20 @@ export const projects = [
     description: "센서 데이터와 영상 데이터를 융합한 멀티모달 딥러닝으로 작업자 동작 인식 및 패턴 분석을 수행하는 시스템입니다.",
     image: "/project/cn1/main.png?height=300&width=500",
     images:["/project/cn1/result.png"],
-    frontendTech: ["Android Studio", "Flutter", "BLE"],
-    backendTech: [],
+    backendTech: ["Android Studio", "SensorManager", "File I/O, Timestamp"],
     aiTech: ["CNN", "LSTM", "PrefixSpan", "TensorFlow"],
     overview: "작업자들의 조립 공정 동작순서와 패턴, 숙련도를 분석하는 멀티모달 딥러닝 기반 동작 인식 시스템입니다. 센서와 영상 데이터를 융합하여 93%의 인식 정확도를 달성했습니다.",
-    planning: "작업자들의 동작 패턴과 숙련도를 객관적으로 분석하는 시스템을 기획했습니다. 특히 서로 다른 작업 순서를 사용하는 작업자들의 효율성을 비교하고, 동작 인식 정확도를 높이는 것이 목표였습니다. 이를 위해 센서와 영상 데이터를 함께 활용하는 멀티모달 접근 방식을 채택했습니다.",
-    challenge: "서로 다른 작업자들의 패턴을 정확히 인식하고, 기존 유니모달 시스템(86.32%)보다 높은 정확도를 달성하는 것이 주요 도전 과제였습니다. 또한 센서와 영상 데이터의 동기화와 효과적인 전처리 방법을 찾는 것도 중요한 과제였습니다.",
+    planning: "작업자별 동작 순서와 숙련도 차이를 분석하여 작업 효율성과 안전성을 향상시키기 위한 시스템을 기획했습니다. 반복 작업 환경에서 발생할 수 있는 비효율적 동작이나 리스크를 사전에 분석하고, 이를 기반으로 공정 개선에 활용할 수 있도록 멀티모달 AI 기반 접근 방식을 채택하였습니다.",
+    challenge: "작업자의 다양한 동작 패턴을 분류하고, 시간 축 기반의 정확한 인식을 위해 센서와 영상 데이터를 동기화 처리하는 것이 핵심 과제였습니다. 특히 작업자의 움직임이 유사하더라도 속도·정확도 등의 미세 차이를 인식하는 정교한 모델링이 요구되었습니다.",
     solution: "Android Studio와 갤럭시 워치를 활용하여 데이터를 수집하고, CNN-LSTM 기반 멀티모달 모델을 개발했습니다. PrefixSpan 알고리즘을 활용하여 작업 패턴을 분석하고, 데이터 전처리를 통해 센서와 영상 데이터를 효과적으로 융합했습니다.",
-    result: "멀티모달 딥러닝으로 93%의 동작 인식 정확도를 달성하여 기존 유니모달 대비 6.7%의 성능 향상을 이뤘습니다. 작업 패턴을 체계적으로 분석하고 시각화하여 작업자의 효율성 평가가 가능해졌습니다.",
+    result: "정확도 93%의 멀티모달 모델을 통해 작업자 동작 자동 분석과 숙련도 평가 시스템의 실현 가능성을 확인했습니다. 분석 결과는 작업 교육, 품질관리, 이상 행동 탐지 등 다양한 산업 현장에 확장 가능성이 있습니다.",
     ai: {
+      images:["/project/cn1/ai1.png","/project/cn1/ai2.png"],
       description: "센서와 영상 데이터를 융합한 멀티모달 딥러닝 모델을 설계하고, 작업 패턴 분석을 위한 알고리즘을 개발했습니다.",
       responsibilities: [
         "CNN 및 LSTM을 활용한 멀티모달 딥러닝 모델 설계 및 학습",
         "센서 데이터와 영상 데이터 융합 및 최적화",
-        "PrefixSpan 알고리즘 기반 다차원 순차패턴 마이닝 구현",
+        "작업자의 행동 순서를 시퀀스로 변환한 후, PrefixSpan으로 반복 패턴 및 효율성 높은 동작 시퀀스를 도출",
         "작업자 숙련도 및 효율성 분석 알고리즘 개발"
       ],
       tech: ["CNN", "LSTM", "PrefixSpan", "Python", "TensorFlow", "OpenCV"],
@@ -418,32 +416,32 @@ export const projects = [
         }
       ],
       growth: [
-        "멀티모달 데이터 처리 및 융합 기술을 습득했습니다.",
+        "센서와 영상 데이터 동기화를 통해 모델 정확도를 93%까지 향상시키는 경험을 통해, 데이터 전처리의 중요성과 멀티모달 처리 역량을 강화하였습니다.",
         "시계열 데이터와 영상 데이터의 동기화 중요성을 이해했습니다.",
-        "작업 패턴 분석 알고리즘 설계 역량을 강화했습니다."
+        "작업 패턴 분석 알고리즘 설계 역량을 강화했습니다.",
+        "본 프로젝트 결과는 OO 학술대회 논문으로 발표되었으며, 실제 산업 현장의 데이터 기반 모델링 사례로 인정받았습니다."
       ]
     },
-    frontend: {
+    backend: {
+      images:["/project/cn1/fr1.png"],
       "description": "Android Studio를 활용하여 센서 데이터 수집 앱을 개발하고 유지보수했습니다.",
       "responsibilities": [
-        "갤럭시 워치와 연동되는 데이터 수집 앱 개발",
-        "실시간 데이터 시각화 인터페이스 구현",
-        "사용자 인터페이스 최적화 및 유지보수"
+        "Android Studio 기반 센서 데이터 수집 앱 개발",
+        "Galaxy Watch 연동 센서(가속도, 자이로 등) 데이터를 실시간 수집",
+        "영상 데이터와의 동기화를 위한 시간 스탬프 기반 구조 설계"
       ],
-      tech: ["Android Studio", "Java", "Flutter", "Kotlin", "BLE"],
+      tech: ["Android Studio", "SensorManager", "File I/O, Timestamp"],
       troubleshooting: [
         {
-          "problem": "IOS 개발자 계정 부재로 인한 배포 제한",
-          "solution": "Flutter를 활용한 크로스 플랫폼 개발 시도와 안드로이드 중심 최적화를 진행했습니다.",
-          "result": "안드로이드 플랫폼에서 안정적인 서비스를 제공했습니다."
+          "problem": "센서 수집 주기 불일치로 타임스탬프 정렬이 어긋나 데이터 동기화 정확도 저하",
+          "solution": "센서 수집 간격을 고정하고, 초단위 타임스탬프 로깅 및 라벨링 구조를 설계했습니다.",
         }
       ],
       growth: [
-        "모바일 앱 개발 및 센서 데이터 처리 경험을 축적했습니다.",
-        "BLE 통신 및 웨어러블 기기 연동 기술을 습득했습니다."
+        "센서 데이터를 효율적으로 수집하고 안정적으로 저장하는 로직을 설계하며, 모바일 환경에서의 실시간 데이터 처리 구조에 대한 이해도를 높였습니다.",
       ]
     },
-    categories: ["ai", "frontend", "backend"]
+    categories: ["ai", "backend"]
   },
   {
     id: "posture-recognition-app",
@@ -454,13 +452,14 @@ export const projects = [
     frontendTech: ["Flutter", "Dart", "RabbitMQ", "Firebase"],
     backendTech: [],
     aiTech: ["3D CNN", "LSTM", "1D CNN", "TensorFlow"],
-    overview: "핸드폰 센서와 영상 데이터를 활용해 사용자의 자세를 정밀하게 인식하고, 이를 통해 일상 및 작업 환경에서의 올바른 자세 유지와 효율성을 증진시키는 멀티모달 딥러닝  기반 앱입니다.",
-    planning: "자세 인식의 정확도를 높이기 위해 센서와 영상 데이터를 융합하는 멀티모달 접근 방식을 기획했습니다. 특히 앉는 자세와 눕는 자세 등 유사한 패턴을 정확히 구분하고, 실시간으로 자세 데이터를 처리하는 시스템을 설계했습니다.",
-    challenge: "기존 유니모달 모델은 자세 인식에서 80% 이하의 낮은 정확도를 보였으며, 특히 유사한 자세 패턴을 구분하기 어려웠습니다. 또한 데이터 부족과 실시간 처리 요구사항도 주요 도전 요소였습니다.",
-    solution: "Flutter 기반 데이터 수집기를 개발하고, 3D CNN, LSTM, 1D CNN 등 다양한 딥러닝 기법을 활용하여 멀티모달 자세 인식 모델을 구현했습니다. 또한 RabbitMQ 서버를 통해 실시간 자세 데이터를 전송하여 안정적인 서비스를 제공했습니다.",
-    result: "멀티모달 딥러닝 모델로 93.65%의 자세 인식 정확도를 달성하여 유니모달 대비 15% 이상 성능을 개선했습니다. 실시간 자세 데이터 전송 및 처리로 다양한 산업 현장에 적용 가능한 시스템을 구축했습니다.",
+    overview: "이 프로젝트는 스마트폰 센서와 카메라 영상을 활용하여 사용자의 자세를 정밀하게 인식하고, 이를 기반으로 올바른 자세 유지와 작업 효율 향상을 지원하는 멀티모달 딥러닝 기반 실시간 자세 인식 앱입니다. Flutter 앱으로 센서와 영상 데이터를 수집하고, 디바이스 내 모델을 통해 분석 후 RabbitMQ 서버에 실시간 전송합니다.",
+    planning: "자세 인식의 정확도를 높이기 위해 센서와 영상 데이터를 결합하는 멀티모달 딥러닝 접근 방식을 기획하였습니다. 특히 앉는 자세와 눕는 자세처럼 유사한 패턴의 구분, 데이터 부족 문제, 그리고 실시간 인식 및 전송 기능을 해결하기 위한 통합 시스템 설계를 목표로 하였습니다.",
+    challenge: "기존 유니모달 모델은 유사한 자세를 구분하는 데 어려움이 있었고, 80% 이하의 낮은 인식 정확도를 보였습니다. 또한 센서와 영상 데이터를 실시간으로 동기화하고 처리하는 구조를 구현하는 데 기술적 복잡성이 있었습니다.",
+    solution: "3D CNN, LSTM, 1D CNN을 조합한 멀티모달 딥러닝 모델을 설계하고, 센서와 영상 데이터를 시간 단위로 동기화하여 정확도를 개선하였습니다. Flutter 앱 내 디바이스에 모델을 탑재하고, RabbitMQ를 통해 실시간으로 데이터를 전송하여 안정적인 서비스 구조를 구현하였습니다.",
+    result: "최종적으로 멀티모달 딥러닝 모델을 통해 93.65%의 자세 인식 정확도를 달성하였고, 유니모달 대비 약 15% 이상의 성능 개선을 이루었습니다. 실시간 전송 및 안정적인 UI 구현으로 산업 현장 적용 가능성을 확인할 수 있었습니다.",
     ai: {
-      description: "영상 및 센서 데이터를 융합한 멀티모달 딥러닝 모델을 개발하고, 실시간 자세 인식을 위한 알고리즘을 구현했습니다.",
+      images:["/project/cn2/ai3.png","/project/cn2/ai2.png","/project/cn2/ai4.png","/project/cn2/ai5.png"],
+      description: "시간 기반 동기화와 증강 기법으로 고품질 데이터셋을 구축하였고, 멀티모달 모델로 최종 93.65%의 자세 인식 정확도를 달성했습니다.",
       responsibilities: [
         "3D CNN, LSTM, 1D CNN 등 다양한 딥러닝 모델 설계 및 학습",
         "센서 데이터와 영상 데이터의 효과적인 융합 방식 연구",
@@ -476,17 +475,17 @@ export const projects = [
         },
         {
           problem: "유사 자세(앉기, 눕기) 구분 어려움",
-          solution: "영상 데이터의 특성을 활용한 보완적 분석 접근법을 도입했습니다.",
+          solution: "영상 프레임 간의 움직임 분포 및 자세 변화량 분석을 통해 보완적 인식 구조를 도입했습니다.",
           result: "유사 자세 간 구분 정확도를 향상시켰습니다."
         }
       ],
       growth: [
-        "멀티모달 데이터 처리 및 융합 기술을 심화 학습했습니다.",
-        "데이터 증강 기법의 실질적인 적용 경험을 쌓았습니다.",
-        "실시간 처리를 위한 모델 최적화 기술을 습득했습니다."
+        "멀티모달 데이터 융합과 실시간 처리 중심의 모델 설계, CNN+LSTM 구조 최적화 경험을 통해 실무 활용 가능한 AI 시스템 구축 역량을 향상시켰습니다.",
+        "또한 데이터 증강(회전, 스케일링, 노이즈 삽입 등)과 디바이스 탑재 최적화를 통해 현장 중심 AI 개발 능력을 강화했습니다.",
       ]
     },
     frontend: {
+      images:["/project/cn2/f3.png","/project/cn2/f1.png","/project/cn2/f2.png"],
       "description": "Flutter 기반 실시간 자세 인식 앱을 개발하고, RabbitMQ 서버와 연동하여 데이터를 전송하는 시스템을 구현했습니다.",
       "responsibilities": [
         "Flutter 기반 자세 인식 앱 개발",
@@ -494,23 +493,17 @@ export const projects = [
         "RabbitMQ 서버 연동 및 데이터 전송 로직 개발",
         "센서 데이터 수집 및 전처리 모듈 구현"
       ],
-      tech: ["Flutter", "Dart", "RabbitMQ", "Firebase", "MQTT"],
+      tech: ["Flutter", "Dart", "RabbitMQ"],
       troubleshooting: [
         {
-          problem: "센서 초기화와 물리엔진 충돌로 인한 블랙스크린 발생",
-          solution: "센서 데이터 수집 패키지 초기화를 비동기 분리하고 초기화 순서를 제어했습니다.",
-          result: "안정적인 앱 실행 환경을 구축했습니다."
+          problem: "앱 장시간 사용 시 불필요한 화면 출력으로 인한 리소스 소모 및 발열 가능성이 있었습니다.",
+          solution: "일정 시간 경과 후 화면을 검정 배경으로 전환하여 GPU 렌더링과 밝기 출력을 최소화했습니다.",
+          result: "앱을 종료하지 않고도 리소스 효율을 개선하며, 장시간 실행 안정성을 확보했습니다."
         },
-        {
-          problem: "센서와 블루투스 상시 활성화로 인한 배터리 소모 과다",
-          solution: "사용자 행동 패턴 분석 기반 조건부 센서 활성화 로직을 구현했습니다.",
-          result: "배터리 소모를 약 40% 절감했습니다."
-        }
       ],
       growth: [
         "실시간 데이터 처리 및 시각화 앱 개발 역량을 강화했습니다.",
         "메시지 큐 기반 데이터 전송 아키텍처 설계 경험을 쌓았습니다.",
-        "디바이스 센서 및 하드웨어 최적화 기술을 습득했습니다."
       ]
     },
     categories: ["ai", "frontend"]
@@ -522,15 +515,15 @@ export const projects = [
     image: "/project/kids/main.png?height=300&width=500",
     images:["/project/kids/result.png"],
     frontendTech: ["HTML/CSS", "JavaScript", "Chart.js"],
-    backendTech: ["Django"],
     aiTech: ["K-Means", "Z-Score", "Scikit-learn", "Pandas"],
     overview: "스마트 밴드를 활용해 영유아의 활동 데이터를 수집하고, 이를 분석하여 학부모와 선생님에게 아이들의 건강 상태를 시각적으로 제공하는 웹 보고서 서비스입니다.",
     planning: "영유아의 건강 상태를 객관적으로 측정하고 관리하기 위해 스마트 밴드 데이터 기반 분석 시스템을 기획했습니다. 특히 데이터를 학부모와 선생님이 쉽게 이해할 수 있도록 직관적인 웹 보고서 형태로 제공하는 것을 목표로 했습니다.",
     challenge: "영유아의 데이터 수집이 어렵고, 수집된 데이터를 의미 있는 정보로 변환하여 학부모와 선생님에게 직관적으로 전달하는 것이 주요 도전 과제였습니다.",
-    solution: "워치 밴드를 아이들이 흥미를 느끼도록 제작하여 데이터 수집을 유도하고, K-Means와 Z-Score를 활용한 군집화 및 이상 탐지 분석을 수행했습니다. 또한 Django 웹 프레임워크를 활용하여 직관적인 보고서 페이지를 개발했습니다.",
-    result: "학부모 및 선생님 만족도 70%를 달성하고, 아이들의 건강 상태를 개인별 평균 활동량과 권장 운동량 데이터를 통해 효과적으로 관리할 수 있게 되었습니다.",
+    solution: "워치 밴드를 아이들이 흥미를 느끼도록 제작하여 데이터 수집을 유도하고, K-Means로 활동량을 유사한 군집으로 분류하고, Z-Score를 통해 통계적으로 유의미한 이상치를 탐지했습니다. 또한 Django 웹 프레임워크를 활용하여 월·주·일 단위 활동량, 이상 탐지 결과, 권장 운동량 등을 시각화하여 보고서 형태로 제공했습니다.",
+    result: "설문조사에서 학부모 및 선생님 만족도 70%를 기록했으며, 월별/주별 활동량과 권장 운동량 비교를 통해 아동 개별 건강 상태를 효과적으로 관리할 수 있었습니다.",
     ai: {
-      description: "K-Means 군집화와 Z-Score 기반 이상 탐지를 활용하여 영유아 활동 데이터를 분석하고, 권장 운동량을 계산하는 알고리즘을 개발했습니다.",
+      images:["/project/kids/ml.png"],
+      description: "K-Means 군집화와 Z-Score 기반 이상 탐지를 활용하여 영유아 활동 데이터를 분석하고, 나이별 평균 활동량과 주간 추이를 기반으로 권장 운동량을 계산하고, 개인별 편차를 반영한 추천 로직을 설계했습니다.",
       responsibilities: [
         "K-Means 기반 활동 패턴 군집화 알고리즘 개발",
         "Z-Score 기반 이상 탐지 시스템 구현",
@@ -540,8 +533,8 @@ export const projects = [
       tech: ["Python", "Scikit-learn", "K-Means", "Z-Score", "Pandas", "NumPy"],
       troubleshooting: [
         {
-          problem: "영유아 데이터 수집의 어려움",
-          solution: "워치 밴드를 아이들이 좋아하는 디자인으로 꾸미고 스티커 등을 활용해 관심을 유도했습니다.",
+          problem: "영유아의 착용 거부 및 수집 환경 조성의 어려움",
+          solution: "아이들이 자발적으로 착용하도록 워치 밴드를 친근한 디자인으로 꾸미고 스티커를 활용해 흥미를 유도했습니다.",
           result: "안정적인 데이터 수집 환경을 구축했습니다."
         },
         {
@@ -553,10 +546,11 @@ export const projects = [
       growth: [
         "영유아 데이터 기반 건강 관리 시스템 개발 경험을 쌓았습니다.",
         "군집화 및 이상 탐지 알고리즘의 실질적 적용 역량을 강화했습니다.",
-        "개인화된 데이터 분석 접근법을 습득했습니다."
+        "분석 결과를 Django 웹페이지에 시각적으로 연동하며, 사용자 대상 데이터 전달 경험도 함께 축적했습니다."
       ]
     },
     frontend: {
+      images:["/project/kids/f1.png","/project/kids/f2.png"],
       description: "Django 웹 프레임워크를 활용하여 영유아 활동 데이터를 시각화하고, 학부모와 선생님이 쉽게 이해할 수 있는 보고서 페이지를 개발했습니다.",
       responsibilities: [
         "Django 기반 웹 보고서 페이지 개발",
@@ -564,7 +558,7 @@ export const projects = [
         "월간, 주간, 일간 보고서 인터페이스 설계",
         "반별 및 나이별 비교 기능 개발"
       ],
-      tech: ["HTML/CSS", "JavaScript", "Chart.js", "Bootstrap"],
+      tech: ["HTML/CSS", "Chart.js", "Bootstrap"],
       troubleshooting: [
         {
           "problem": "복잡한 데이터를 직관적으로 표현하는 어려움",
@@ -573,34 +567,11 @@ export const projects = [
         }
       ],
       growth: [
-        "데이터 시각화 및 웹 개발 역량을 강화했습니다.",
-        "사용자 중심 인터페이스 설계 경험을 쌓았습니다.",
-        "교육 관련 데이터 표현 방식에 대한 이해를 확장했습니다."
+        "교육 도메인 데이터의 시각화 기획 및 프론트엔드 구현 역량을 강화했습니다.",
+        "사용자 중심 인터페이스 설계 경험을 쌓았습니다."
       ]
     },
-    backend: {
-      description: "Django 기반 웹 서버를 구축하고, AI 분석 결과를 시각화하여 제공하는 API 및 관리 기능을 개발했습니다.",
-      responsibilities: [
-        "Django 모델 및 ORM을 활용한 활동 데이터 저장 구조 설계",
-        "AI 분석 결과를 클라이언트에 전달하는 RESTful API 개발",
-        "반별/개인별 통계 데이터를 시각화용 JSON 형태로 가공 처리",
-        "보고서 조회, 기간 필터, 학부모/교사 권한 구분 기능 구현"
-      ],
-      tech: ["Django", "Django REST Framework", "MySQL", "Gunicorn"],
-      troubleshooting: [
-        {
-          problem: "관리자 권한이 없을 경우 민감 데이터가 노출될 우려",
-          solution: "사용자 권한에 따른 필드 레벨 응답 필터링 추가",
-          result: "보안성 강화 및 사용자별 맞춤 정보 제공 가능"
-        }
-      ],
-      growth: [
-        "Django ORM 및 관리자 기능을 활용한 실전 백오피스 구성 경험",
-        "RESTful API 설계와 Django 기반 데이터 필터링 처리 역량 강화",
-        "보안과 성능을 동시에 고려한 백엔드 시스템 설계 역량 향상"
-      ]
-    },
-    "categories": ["ai", "frontend","backend"]
+    "categories": ["ai", "frontend"]
   }
   
 ]

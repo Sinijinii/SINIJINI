@@ -3,8 +3,8 @@ export const projects = [
     id: "gangwon-travel",
     title: "모두의 취향을 고려한 강원도 여행 코스 추천 서비스",
     description: "개인과 그룹의 여행 성향을 분석하여 최적화된 강원도 여행 코스를 추천하는 서비스입니다.",
-    image: "/project/maumkkut/main.png?height=300&width=500",
-    images:["/project/maumkkut/result.png"],
+    image: "/project/maumkkut/main.PNG?height=300&width=500",
+    images:["/project/maumkkut/result.PNG"],
     overview: "개인 및 그룹 여행자의 성향을 분석해 최적의 여행지를 추천하고 동선을 최적화하는 AI 기반 코스 추천 서비스입니다.",
     planning:
       "여행 계획을 세울 때 개인의 취향과 그룹 구성원들의 다양한 선호도를 모두 고려하는 것은 어려운 과제입니다. 이 문제를 해결하기 위해 사용자 성향 분석과 그룹 추천 알고리즘을 결합한 서비스를 기획했습니다. 강원도 관광 데이터를 활용하여 지역별 특성과 사용자 선호도를 매칭하고, 최적의 이동 경로를 제안하는 것을 목표로 했습니다.",
@@ -17,7 +17,7 @@ export const projects = [
     backendTech: ["Django REST Framework", "MySQL", "Kakao Maps API"],
     aiTech: ["K-평균 클러스터링", "Cosine Similarity", "경로 최적화 알고리즘"],
     backend: {
-      images:["/project/maumkkut/002.png"],
+      images:["/project/maumkkut/002.PNG"],
       architectureImage: "",
       architectureImageCaption: "",
       description: "여행 성향 분석 및 코스 추천 알고리즘의 실행을 위한 서버를 구축하고, API 및 DB를 설계했습니다.",
@@ -41,7 +41,7 @@ export const projects = [
       ]
     },
     ai: {
-      images:["/project/maumkkut/001.png"],
+      images:["/project/maumkkut/001.PNG"],
       description: "여행 성향 기반 캐릭터 매칭, 그룹 통합 성향 분석, 최적 경로 계산 등을 위한 AI 알고리즘을 개발했습니다.",
       responsibilities: [
         "사용자 설문 데이터를 바탕으로 주요 여행 성향(10개 항목)에 대한 중요도를 수치화하고, K-평균 클러스터링으로 8가지 여행 캐릭터 군집 생성",
@@ -74,8 +74,8 @@ export const projects = [
   id: "sign-language-translator",
   title: "손누리: 웹서핑이 힘든 청각장애인들을 위한 한국어-수어 통역 서비스",
   description: "GPT와 형태소 분석기 기반 한국어-수어 번역 알고리즘을 구현하고, 수어 사전 확장과 실시간 성능 최적화를 통해 웹 접근성을 향상시킨 AI 기반 수어 통역 서비스입니다.",
-  image: "/project/sonuri/main.png?height=300&width=500",
-  images:["/project/sonuri/result.png"],
+  image: "/project/sonuri/main.PNG?height=300&width=500",
+  images:["/project/sonuri/result.PNG"],
   aiTech: ["GPT", "형태소 분석기", "벡터 데이터베이스", "Semantic Search"],
   overview:
     "청각장애인을 위한 웹 접근성 개선을 목표로, 한국어 문장을 수어 문법으로 번역하고, 새로운 수어 표현을 생성하는 AI 기반 서비스입니다.",
@@ -89,7 +89,7 @@ export const projects = [
     "프로젝트 우수상",
    
   ai: {
-    images:["/project/sonuri/sonuri1.png","/project/sonuri/sonuri2.png","/project/sonuri/sonuri3.png","/project/sonuri/sonuri4.png"],
+    images:["/project/sonuri/sonuri1.PNG","/project/sonuri/sonuri2.PNG","/project/sonuri/sonuri3.PNG","/project/sonuri/sonuri4.PNG"],
     description:
       "한국어 문법을 수어 문법으로 자연스럽게 변환하고, 수어 사전에 없는 단어에 대해 새로운 수어 영상을 생성하는 알고리즘을 개발했습니다.",
     responsibilities: [
@@ -133,8 +133,8 @@ export const projects = [
     id: "zoozoo-fin",
     title: "주주핀 ZooZooFin - 금융 교육 게임 앱",
     description: "LSTM과 감정 분석 기반의 주가 힌트 제공, 금융 퀴즈 학습, 재무제표 기반 투자 이해를 돕는 금융 교육 게임 서비스입니다.",
-    image: "/project/zoozoofin/main.png?height=300&width=500",
-    images:["/project/zoozoofin/result.png"],
+    image: "/project/zoozoofin/main.PNG?height=300&width=500",
+    images:["/project/zoozoofin/result.PNG"],
     frontendTech: ["React.js", "Recharts", "CSS Modules"],
     aiTech: ["LSTM", "KR-FinBERT-SC","Flask"],
     overview: "주가 예측, 감정 분석, 재무제표 분석을 결합한 AI 기반 금융 힌트 시스템과 퀴즈 학습을 통해 금융 지식을 쉽게 습득할 수 있도록 구성된 게임 서비스입니다.",
@@ -148,7 +148,7 @@ export const projects = [
       "프로젝트 우수상",
     
     ai: {
-      images:["/project/zoozoofin/zo0.png"],
+      images:["/project/zoozoofin/zo0.PNG"],
       description: "감정 분석을 시계열 모델에 융합한 AI 기반 힌트 제공 시스템을 구현했습니다. 주가 예측뿐만 아니라 사용자에게 직관적인 투자 힌트를 제공하기 위해, 정성(뉴스 감정)과 정량 데이터를 통합한 멀티소스 기반 LSTM 모델을 설계하고 실제 서비스 흐름에 적용하였습니다.",
       responsibilities: [
         "LSTM 기반 시계열 주가 예측 모델 설계 및 11년치 데이터 학습",
@@ -186,7 +186,7 @@ export const projects = [
       ]
     },
     frontend: {
-      images:["/project/zoozoofin/001.png","/project/zoozoofin/002.png","/project/zoozoofin/003.png"],
+      images:["/project/zoozoofin/001.PNG","/project/zoozoofin/002.PNG","/project/zoozoofin/003.PNG"],
       description: "게임 내 화면 UI/UX 구성, 퀴즈 및 힌트 인터페이스 개발을 React 기반으로 구현했습니다. 사용자 경험과 교육 효과를 고려해 금융 정보를 직관적으로 시각화하고, 게임 흐름에 맞춘 UI 상태 설계를 중점적으로 수행했습니다.",
       responsibilities: [
         "React.js 기반 주식 힌트, 금융 퀴즈, 사용자 바, 포트폴리오 화면 설계 및 구현 ",
@@ -215,8 +215,8 @@ export const projects = [
     title: "기웃기옷 - 옷 기억도 분석 서비스",
     description:
       "사용자가 입으려는 옷이 주변 사람들에게 얼마나 기억에 남는지 분석하고, 더 나은 스타일 선택을 지원하는 서비스입니다.",
-    image: "/project/giutgiot/main.png?height=300&width=500",
-    images:["/project/giutgiot/result.png"],
+    image: "/project/giutgiot/main.PNG?height=300&width=500",
+    images:["/project/giutgiot/result.PNG"],
     frontendTech: ["Flutter", "OAuth", "Chart library"],
     aiTech: ["CNN-LSTM", "Pyannote", "SVM", "아이트래킹", "Naive Bayes","Flask"],
     overview:
@@ -234,7 +234,7 @@ export const projects = [
     result:
       "기억도라는 생소한 개념을 실제 사용자 경험으로 구현할 수 있었으며, 음성 입력, 시선 추적, AI 분석 등 다양한 기술을 융합한 데이터 기반 패션 피드백 서비스의 가능성을 실험했습니다.",
     ai: {
-      images:["/project/giutgiot/ai1.gif","/project/giutgiot/ai2.gif","/project/giutgiot/ai3.gif","/project/giutgiot/ai4.png"],
+      images:["/project/giutgiot/ai1.GIF","/project/giutgiot/ai2.GIF","/project/giutgiot/ai3.GIF","/project/giutgiot/ai4.PNG"],
       description: "사용자의 움직임, 시선, 음성 및 대화 데이터를 기반으로 옷의 기억도를 분석하는 멀티모달 AI 모델을 개발했습니다.",
       responsibilities: [
         "CNN-LSTM 모델을 활용한 움직임 감지 및 특정 타이밍의 음성 녹음 트리거 개발",
@@ -261,7 +261,7 @@ export const projects = [
       ]
     },
     frontend: {
-      images:["/project/giutgiot/f1.gif","/project/giutgiot/ai4.png"],
+      images:["/project/giutgiot/f1.GIF","/project/giutgiot/ai4.PNG"],
       description:
         "사용자의 옷 정보를 음성으로 간편하게 등록하고, 백엔드 API와 연동되는 데이터 흐름을 관리하며 안정적인 사용자 경험을 제공했습니다.",
       responsibilities: [
@@ -290,8 +290,8 @@ export const projects = [
     id: "ott-movie-recommender",
     title: "OTT 정보 및 커뮤니티 기반 영화 추천 서비스",
     description: "OTT별 영화 정보를 제공하고, 코사인 유사도 기반 추천, CNN 닮은꼴 배우 추천, 생성형 AI 포스터 제작을 결합한 영화 추천 커뮤니티 플랫폼입니다.",
-    image: "/project/motis/main.png?height=300&width=500",
-    images:["/project/motis/result.png"],
+    image: "/project/motis/main.PNG?height=300&width=500",
+    images:["/project/motis/result.PNG"],
     frontendTech: ["Flutter", "OAuth", "Chart library"],
     backendTech: ["Django"],
     aiTech: ["Tensorflow", "Django", "Pandas", "NumPy", "OpenCV", "Cosine Similarity", "CNN"],
@@ -301,7 +301,7 @@ export const projects = [
     solution: "코사인 유사도 기반의 추천 알고리즘에 사용자 선호 장르 가중치를 적용해 직관성과 다양성을 확보했으며, CNN 기반 얼굴 유사도 모델을 통해 닮은꼴 배우 추천 기능을 구현했습니다. 생성형 AI를 통해 입력 키워드 기반의 커스텀 포스터를 제공해 사용자 흥미를 유도했습니다.",
     result: "기존 추천 서비스보다 시각적 매력과 인터랙션 요소가 강화되었고, 사용자 피드백을 통해 만족도와 콘텐츠 참여율이 높아졌습니다. 추천 결과에 대한 설명이 가능해 사용자 신뢰도도 증가했습니다.",
     ai: {
-      images:["/project/motis/ai1.png","/project/motis/ai2.png","/project/motis/ai3.png"],
+      images:["/project/motis/ai1.PNG","/project/motis/ai2.PNG","/project/motis/ai3.PNG"],
       description: "코사인 유사도 기반 추천, CNN 모델 기반 닮은꼴 배우 추천, 생성형 AI 포스터 생성 기능을 개발하고 Django로 모델 서빙을 담당했습니다.",
       responsibilities: [
         "장르, 감독, 배우 메타데이터를 활용한 영화 간 유사도 계산 및 추천 알고리즘 설계",
@@ -329,7 +329,7 @@ export const projects = [
       ]
     },
     frontend: {
-      images:["/project/motis/fr1.png","/project/motis/back.png"],
+      images:["/project/motis/fr1.PNG","/project/motis/back.PNG"],
       description: "Vue.js를 활용한 전체 UI 구현과 비동기 기반 댓글/좋아요 기능을 포함한 커뮤니티 기능 개발을 담당했습니다.",
       responsibilities: [
         "Vue.js 기반 영화 목록, 추천 결과, 닮은꼴 배우, 포스터 공유 등 주요 페이지 구현",
@@ -384,8 +384,8 @@ export const projects = [
     id: "assembly-motion-recognition",
     title: "멀티모달 딥러닝 기반 작업자 동작 인식 시스템",
     description: "센서 데이터와 영상 데이터를 융합한 멀티모달 딥러닝으로 작업자 동작 인식 및 패턴 분석을 수행하는 시스템입니다.",
-    image: "/project/cn1/main.png?height=300&width=500",
-    images:["/project/cn1/result.png"],
+    image: "/project/cn1/main.PNG?height=300&width=500",
+    images:["/project/cn1/result.PNG"],
     backendTech: ["Android Studio", "SensorManager", "File I/O, Timestamp"],
     aiTech: ["CNN", "LSTM", "PrefixSpan", "TensorFlow"],
     overview: "작업자들의 조립 공정 동작순서와 패턴, 숙련도를 분석하는 멀티모달 딥러닝 기반 동작 인식 시스템입니다. 센서와 영상 데이터를 융합하여 93%의 인식 정확도를 달성했습니다.",
@@ -394,7 +394,7 @@ export const projects = [
     solution: "Android Studio와 갤럭시 워치를 활용하여 데이터를 수집하고, CNN-LSTM 기반 멀티모달 모델을 개발했습니다. PrefixSpan 알고리즘을 활용하여 작업 패턴을 분석하고, 데이터 전처리를 통해 센서와 영상 데이터를 효과적으로 융합했습니다.",
     result: "정확도 93%의 멀티모달 모델을 통해 작업자 동작 자동 분석과 숙련도 평가 시스템의 실현 가능성을 확인했습니다. 분석 결과는 작업 교육, 품질관리, 이상 행동 탐지 등 다양한 산업 현장에 확장 가능성이 있습니다.",
     ai: {
-      images:["/project/cn1/ai1.png","/project/cn1/ai2.png"],
+      images:["/project/cn1/ai1.PNG","/project/cn1/ai2.PNG"],
       description: "센서와 영상 데이터를 융합한 멀티모달 딥러닝 모델을 설계하고, 작업 패턴 분석을 위한 알고리즘을 개발했습니다.",
       responsibilities: [
         "CNN 및 LSTM을 활용한 멀티모달 딥러닝 모델 설계 및 학습",
@@ -423,7 +423,7 @@ export const projects = [
       ]
     },
     backend: {
-      images:["/project/cn1/fr1.png"],
+      images:["/project/cn1/fr1.PNG"],
       "description": "Android Studio를 활용하여 센서 데이터 수집 앱을 개발하고 유지보수했습니다.",
       "responsibilities": [
         "Android Studio 기반 센서 데이터 수집 앱 개발",
@@ -447,8 +447,8 @@ export const projects = [
     id: "posture-recognition-app",
     title: "멀티모달 딥러닝 기반 실시간 자세 인식 앱",
     description: "핸드폰 센서와 영상 데이터를 융합하여 사용자의 자세를 93.65% 정확도로 인식하고, RabbitMQ 서버를 통해 실시간으로 데이터를 전송하는 Flutter 기반 앱입니다.",
-    image: "/project/cn2/main.png?height=300&width=500",
-    images:["/project/cn2/result.png"],
+    image: "/project/cn2/main.PNG?height=300&width=500",
+    images:["/project/cn2/result.PNG"],
     frontendTech: ["Flutter", "Dart", "RabbitMQ", "Firebase"],
     backendTech: [],
     aiTech: ["3D CNN", "LSTM", "1D CNN", "TensorFlow"],
@@ -458,7 +458,7 @@ export const projects = [
     solution: "3D CNN, LSTM, 1D CNN을 조합한 멀티모달 딥러닝 모델을 설계하고, 센서와 영상 데이터를 시간 단위로 동기화하여 정확도를 개선하였습니다. Flutter 앱 내 디바이스에 모델을 탑재하고, RabbitMQ를 통해 실시간으로 데이터를 전송하여 안정적인 서비스 구조를 구현하였습니다.",
     result: "최종적으로 멀티모달 딥러닝 모델을 통해 93.65%의 자세 인식 정확도를 달성하였고, 유니모달 대비 약 15% 이상의 성능 개선을 이루었습니다. 실시간 전송 및 안정적인 UI 구현으로 산업 현장 적용 가능성을 확인할 수 있었습니다.",
     ai: {
-      images:["/project/cn2/ai3.png","/project/cn2/ai2.png","/project/cn2/ai4.png","/project/cn2/ai5.png"],
+      images:["/project/cn2/ai3.PNG","/project/cn2/ai2.PNG","/project/cn2/ai4.PNG","/project/cn2/ai5.PNG"],
       description: "시간 기반 동기화와 증강 기법으로 고품질 데이터셋을 구축하였고, 멀티모달 모델로 최종 93.65%의 자세 인식 정확도를 달성했습니다.",
       responsibilities: [
         "3D CNN, LSTM, 1D CNN 등 다양한 딥러닝 모델 설계 및 학습",
@@ -485,7 +485,7 @@ export const projects = [
       ]
     },
     frontend: {
-      images:["/project/cn2/f3.png","/project/cn2/f1.png","/project/cn2/f2.png"],
+      images:["/project/cn2/f3.PNG","/project/cn2/f1.PNG","/project/cn2/f2.PNG"],
       "description": "Flutter 기반 실시간 자세 인식 앱을 개발하고, RabbitMQ 서버와 연동하여 데이터를 전송하는 시스템을 구현했습니다.",
       "responsibilities": [
         "Flutter 기반 자세 인식 앱 개발",
@@ -512,8 +512,8 @@ export const projects = [
     id: "infant-health-monitoring",
     title: "영유아 스마트 밴드 데이터 기반 건강 분석 및 웹 보고서",
     description: "스마트 밴드로 수집한 영유아 활동 데이터를 K-means와 Z-Score 기반으로 분석하고, 맞춤형 권장 운동량을 제공하는 웹 보고서 서비스입니다.",
-    image: "/project/kids/main.png?height=300&width=500",
-    images:["/project/kids/result.png"],
+    image: "/project/kids/main.PNG?height=300&width=500",
+    images:["/project/kids/result.PNG"],
     frontendTech: ["HTML/CSS", "JavaScript", "Chart.js"],
     aiTech: ["K-Means", "Z-Score", "Scikit-learn", "Pandas"],
     overview: "스마트 밴드를 활용해 영유아의 활동 데이터를 수집하고, 이를 분석하여 학부모와 선생님에게 아이들의 건강 상태를 시각적으로 제공하는 웹 보고서 서비스입니다.",
@@ -522,7 +522,7 @@ export const projects = [
     solution: "워치 밴드를 아이들이 흥미를 느끼도록 제작하여 데이터 수집을 유도하고, K-Means로 활동량을 유사한 군집으로 분류하고, Z-Score를 통해 통계적으로 유의미한 이상치를 탐지했습니다. 또한 Django 웹 프레임워크를 활용하여 월·주·일 단위 활동량, 이상 탐지 결과, 권장 운동량 등을 시각화하여 보고서 형태로 제공했습니다.",
     result: "설문조사에서 학부모 및 선생님 만족도 70%를 기록했으며, 월별/주별 활동량과 권장 운동량 비교를 통해 아동 개별 건강 상태를 효과적으로 관리할 수 있었습니다.",
     ai: {
-      images:["/project/kids/ml.png"],
+      images:["/project/kids/ml.PNG"],
       description: "K-Means 군집화와 Z-Score 기반 이상 탐지를 활용하여 영유아 활동 데이터를 분석하고, 나이별 평균 활동량과 주간 추이를 기반으로 권장 운동량을 계산하고, 개인별 편차를 반영한 추천 로직을 설계했습니다.",
       responsibilities: [
         "K-Means 기반 활동 패턴 군집화 알고리즘 개발",
@@ -550,7 +550,7 @@ export const projects = [
       ]
     },
     frontend: {
-      images:["/project/kids/f1.png","/project/kids/f2.png"],
+      images:["/project/kids/f1.PNG","/project/kids/f2.PNG"],
       description: "Django 웹 프레임워크를 활용하여 영유아 활동 데이터를 시각화하고, 학부모와 선생님이 쉽게 이해할 수 있는 보고서 페이지를 개발했습니다.",
       responsibilities: [
         "Django 기반 웹 보고서 페이지 개발",

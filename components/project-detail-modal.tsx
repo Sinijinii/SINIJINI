@@ -74,7 +74,7 @@ interface ProjectDetailProps {
 
 export default function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailProps) {
   const [activeTab, setActiveTab] = useState<"overview" | "frontend" | "backend" | "ai">("overview")
-
+  const prefix = process.env.NODE_ENV === "production" ? "/SINIJINI" : "";
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden"
@@ -122,7 +122,7 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
             {/* 헤더 이미지 */}
             <div className="relative h-64 w-full">
               <Image
-                src={project.image || "/placeholder.svg?height=300&width=1000"}
+                src={project.image ? `${prefix}${project.image}` : "/placeholder.svg?height=300&width=1000"}
                 alt={project.title}
                 fill
                 className="object-cover"
@@ -220,7 +220,7 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                       {project.images.map((img, index) => (
                         <div key={index} className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
                           <Image
-                            src={img || "/placeholder.svg"}
+                            src={`${prefix}${img}`}
                             alt={`프로젝트 대표 이미지 ${index + 1}`}
                             fill
                             className="object-cover"
@@ -352,7 +352,7 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                           {project.ai.images.map((img, index) => (
                             <div key={index} className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
                               <Image
-                                src={img || "/placeholder.svg?height=400&width=900"}
+                                src={`${prefix}${img}`}
                                 alt={`AI/ML 이미지 ${index + 1}`}
                                 fill
                                 className="object-contain"
@@ -461,7 +461,7 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                           {project.frontend.images.map((img, index) => (
                             <div key={index} className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
                               <Image
-                                src={img || "/placeholder.svg?height=400&width=900"}
+                                src={`${prefix}${img}`}
                                 alt={`프론트엔드 이미지 ${index + 1}`}
                                 fill
                                 className="object-contain"
@@ -620,7 +620,7 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                           {project.backend.images.map((img, index) => (
                             <div key={index} className="relative w-full max-w-[900px] h-[400px] mx-auto rounded-lg overflow-hidden shadow-md border">
                               <Image
-                                src={img || "/placeholder.svg?height=400&width=900"}
+                                src={`${prefix}${img}`}
                                 alt={`백엔드 이미지 ${index + 1}`}
                                 fill
                                 className="object-contain"

@@ -483,10 +483,10 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-6 text-center text-purple-500">AI / ML</h3>
               <div className="grid grid-cols-3 gap-6">
                 <SkillIcon name="TensorFlow" icon={`${prefix}/Skills/Tensor.png`} />
-                <SkillIcon name="PyTorch" icon={`${prefix}/Skills/Pytorch.PNG`} />
-                <SkillIcon name="Scikit-learn" icon={`${prefix}/Skills/Scikit.PNG`} />
-                <SkillIcon name="HuggingFace" icon={`${prefix}/Skills/hugging.PNG`} />
-                <SkillIcon name="LangChain" icon={`${prefix}/Skills/langchain.JPEG`} />
+                <SkillIcon name="PyTorch" icon={`${prefix}/Skills/Pytorch.png`} />
+                <SkillIcon name="Scikit-learn" icon={`${prefix}/Skills/Scikit.png`} />
+                <SkillIcon name="HuggingFace" icon={`${prefix}/Skills/hugging.png`} />
+                <SkillIcon name="LangChain" icon={`${prefix}/Skills/langchain.jpeg`} />
               </div>
             </motion.div>
 
@@ -500,12 +500,12 @@ export default function Home() {
             >
               <h3 className="text-xl font-semibold mb-6 text-center text-blue-500">Front-End</h3>
               <div className="grid grid-cols-3 gap-6">
-                <SkillIcon name="HTML" icon={`${prefix}/Skills/HTML.PNG`} />
-                <SkillIcon name="CSS" icon={`${prefix}/Skills/CSS.PNG`} />
-                <SkillIcon name="JavaScript" icon={`${prefix}/Skills/JavaScript.PNG`} />
-                <SkillIcon name="TypeScript" icon={`${prefix}/Skills/TypeScript.PNG`} />
-                <SkillIcon name="React" icon={`${prefix}/Skills/React.PNG`} />
-                <SkillIcon name="Vue" icon={`${prefix}/Skills/Vue.PNG`} />
+                <SkillIcon name="HTML" icon={`${prefix}/Skills/HTML.png`} />
+                <SkillIcon name="CSS" icon={`${prefix}/Skills/CSS.png`} />
+                <SkillIcon name="JavaScript" icon={`${prefix}/Skills/JavaScript.png`} />
+                <SkillIcon name="TypeScript" icon={`${prefix}/Skills/TypeScript.png`} />
+                <SkillIcon name="React" icon={`${prefix}/Skills/React.png`} />
+                <SkillIcon name="Vue" icon={`${prefix}/Skills/Vue.png`} />
               </div>
             </motion.div>
 
@@ -519,11 +519,11 @@ export default function Home() {
             >
               <h3 className="text-xl font-semibold mb-6 text-center text-green-500">Back-End</h3>
               <div className="grid grid-cols-3 gap-6">
-                <SkillIcon name="Python" icon={`${prefix}/Skills/Python.JPEG`} />
-                <SkillIcon name="Django" icon={`${prefix}/Skills/Django.PNG`} />
-                <SkillIcon name="FastAPI" icon={`${prefix}/Skills/Fastapi.PNG`} />
-                <SkillIcon name="Flask" icon={`${prefix}/Skills/Flask.PNG`} />
-                <SkillIcon name="Spring" icon={`${prefix}/Skills/spring.PNG`} />
+                <SkillIcon name="Python" icon={`${prefix}/Skills/Python.jpeg`} />
+                <SkillIcon name="Django" icon={`${prefix}/Skills/Django.png`} />
+                <SkillIcon name="FastAPI" icon={`${prefix}/Skills/Fastapi.png`} />
+                <SkillIcon name="Flask" icon={`${prefix}/Skills/Flask.png`} />
+                <SkillIcon name="Spring" icon={`${prefix}/Skills/spring.png`} />
               </div>
             </motion.div>
 
@@ -537,10 +537,10 @@ export default function Home() {
             >
               <h3 className="text-xl font-semibold mb-6 text-center text-yellow-600">Tools</h3>
               <div className="grid grid-cols-3 gap-6">
-                <SkillIcon name="Git" icon={`${prefix}/Skills/Git.PNG`} />
-                <SkillIcon name="GitHub" icon={`${prefix}/Skills/Github.JPEG`} />
-                <SkillIcon name="JIRA" icon={`${prefix}/Skills/Jira.JPEG`} />
-                <SkillIcon name="Figma" icon={`${prefix}/Skills/Figma.JPEG`} />
+                <SkillIcon name="Git" icon={`${prefix}/Skills/Git.png`} />
+                <SkillIcon name="GitHub" icon={`${prefix}/Skills/Github.jpeg`} />
+                <SkillIcon name="JIRA" icon={`${prefix}/Skills/Jira.jpeg`} />
+                <SkillIcon name="Figma" icon={`${prefix}/Skills/Figma.jpeg`} />
               </div>
             </motion.div>
           </div>

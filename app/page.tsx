@@ -143,7 +143,7 @@ export default function Home() {
                 className="flex flex-col items-center justify-center"
               >
                 <div className="relative h-80 w-80 overflow-hidden rounded-full border-4 border-white shadow-lg">
-                  <Image src={`${prefix}/profile.jpg`} alt="신희진" fill className="w-full h-full object-cover object-top" />
+                  <Image src={`${prefix}/profile.JPG`} alt="신희진" fill className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="mt-6 flex justify-center gap-4">
                   <a

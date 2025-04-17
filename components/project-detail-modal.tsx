@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { X, Code, Database, Brain, ExternalLink, Github, TrendingUp, Wrench } from "lucide-react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
@@ -75,6 +75,8 @@ interface ProjectDetailProps {
 export default function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailProps) {
   const [activeTab, setActiveTab] = useState<"overview" | "frontend" | "backend" | "ai">("overview")
   const prefix = process.env.NODE_ENV === "production" ? "/SINIJINI" : "";
+  const scrollRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden"
@@ -90,10 +92,10 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
     }
   }, [isOpen])
   
+
   useEffect(() => {
-    const content = document.querySelector(".max-h-[calc(95vh-330px)]")
-    if (content) {
-      content.scrollTop = 0
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = 0
     }
   }, [activeTab])
 
@@ -203,7 +205,7 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
             </div>
 
             {/* 탭 콘텐츠 */}
-            <div className="max-h-[calc(95vh-330px)] overflow-y-auto p-6">
+            <div ref={scrollRef} className="max-h-[calc(95vh-330px)] overflow-y-auto p-6">
             {activeTab === "overview" && (
               <div className="space-y-6">
                 {project.planning && (

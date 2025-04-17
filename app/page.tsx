@@ -594,19 +594,22 @@ export default function Home() {
       {/* 고정 네비게이션 */}
       <div className="fixed bottom-8 right-8 flex flex-col gap-4">
         <a
-          href="gmlwls2407@gmail.com"
+          href="mailto:gmlwls2407@gmail.com?subject=포트폴리오%20문의&body=안녕하세요, 포트폴리오를 보고 연락드립니다."
           className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md transition-all hover:bg-gray-100"
           aria-label="이메일 보내기"
         >
           <Mail className="h-5 w-5 text-gray-600" />
         </a>
         <a
-          href="#"
+          href="https://open.kakao.com/o/s4w8pDrh"
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md transition-all hover:bg-gray-100"
-          aria-label="메시지 보내기"
+          aria-label="카카오톡 오픈채팅"
         >
           <MessageSquare className="h-5 w-5 text-gray-600" />
         </a>
+
         <AnimatePresence>
           {showScrollTop && (
             <motion.button

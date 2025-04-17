@@ -482,7 +482,7 @@ export default function Home() {
             >
               <h3 className="text-xl font-semibold mb-6 text-center text-purple-500">AI / ML</h3>
               <div className="grid grid-cols-3 gap-6">
-                <SkillIcon name="TensorFlow" icon={`${prefix}/Skills/Tensor.PNG`} />
+                <SkillIcon name="TensorFlow" icon={`${prefix}/Skills/Tensor.png`} />
                 <SkillIcon name="PyTorch" icon={`${prefix}/Skills/Pytorch.PNG`} />
                 <SkillIcon name="Scikit-learn" icon={`${prefix}/Skills/Scikit.PNG`} />
                 <SkillIcon name="HuggingFace" icon={`${prefix}/Skills/hugging.PNG`} />

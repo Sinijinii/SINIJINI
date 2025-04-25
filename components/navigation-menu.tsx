@@ -26,7 +26,7 @@ export default function NavigationMenu({ activeSection }: NavigationMenuProps) {
   const menuItems = [
     { id: "about", label: "About" },
     { id: "career", label: "Experience" },
-    { id: "tech-integration", label: "기술 통합" },
+    // { id: "tech-integration", label: "기술 통합" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
   ]

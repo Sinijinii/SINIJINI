@@ -383,7 +383,8 @@ export default function Home() {
       </section>
 
       {/* 기술 통합 섹션 */}
-      <section id="tech-integration" className="min-h-screen py-20 section-bg-alt">
+      
+      {/* <section id="tech-integration" className="min-h-screen py-20 section-bg-alt">
         <div className="container mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
@@ -392,7 +393,7 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             className="mb-16 text-4xl font-light md:text-5xl"
           >
-            {/* 기술 통합 접근법 */}
+
           </motion.h2>
 
           <div className="mx-auto max-w-5xl">
@@ -457,7 +458,7 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section id="skills" className="min-h-screen py-20">
         <div className="container mx-auto px-6">

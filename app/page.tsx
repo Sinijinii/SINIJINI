@@ -203,7 +203,9 @@ export default function Home() {
               transition={{ duration: 0.7, delay: 0.6 }}
               className="mb-16"
             >
-              <AboutTestimonials />
+              <div className="min-h-[300px]"> 
+                <AboutTestimonials />
+              </div>
             </motion.div>
 
             {/* Interview 섹션 내용 - 가로 배치로 변경 */}

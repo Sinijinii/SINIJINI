@@ -460,7 +460,7 @@ export default function Home() {
         </div>
       </section> */}
 
-      <section id="skills" className="min-h-screen py-20">
+      <section id="skills" className="min-h-screen py-20 section-bg-alt">
         <div className="container mx-auto px-6">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -550,7 +550,7 @@ export default function Home() {
 
 
       {/* Projects 섹션 */}
-      <section id="projects" className="min-h-screen py-20 section-bg-alt">
+      <section id="projects" className="min-h-screen py-20">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16">
             <motion.p

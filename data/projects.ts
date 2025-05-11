@@ -17,7 +17,7 @@ export const projects = [
       images: ["/project/chatda/ai1.png"],
       description: "실제 상담 데이터를 기반으로 파인튜닝한 도메인 특화 모델과, 의미 기반 RAG 구조를 결합해 신뢰도 높은 상담 응답과 추천 결과를 생성했습니다.",
       responsibilities: [
-        "LoRA 기반 GPT 파인튜닝 수행 및 학습 파라미터 최적화",
+        "LoRA 기반 LLM 파인튜닝 수행 및 학습 파라미터 최적화",
         "실제 상담 대화 데이터를 전처리하여 JSONL 형식으로 구조화",
         "RecursiveCharacterTextSplitter 기반 청크 분할 및 Chroma 벡터 DB 구축",
         "직업 리스트 기반 추천 결과 검증 및 유사도 매핑 로직 구현"

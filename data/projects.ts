@@ -1,5 +1,69 @@
 export const projects = [
   {
+    id: "career-counselor-ai",
+    title: "AI 기반 진로 상담 챗봇 시스템",
+    description: "한국 중고등학생의 진로 탐색을 돕기 위한 파인튜닝 LLM + RAG 기반 맞춤형 상담 시스템입니다. 실시간 대화형 인터페이스와 성향 분석, 직업 추천, 맞춤형 리포트 생성 기능을 포함합니다.",
+    image: "/project/chatda/main.png?height=300&width=500",
+    images:["/project/chatda/result.png"],
+    frontendTech: ["FastAPI", "React", "TailwindCSS"],
+    backendTech: ["OpenAI API", "Chroma", "HuggingFace Transformers"],
+    aiTech: ["LoRA", "GPT-4", "RAG", "LangChain", "Sentence-Transformers"],
+    overview: "진로 상담 데이터를 기반으로 학생의 성향과 관심사를 파악하고, 적합한 직무를 추천하는 AI 챗봇 시스템을 개발했습니다. 커스텀 파인튜닝 모델과 OpenAI API를 결합하여 대화형 상담 흐름을 유지하면서 성향 분석, 직업 추천, 리포트 생성을 제공합니다.",
+    planning: "한국 중고등학생 대상의 진로 상담은 정형화된 흐름과 도메인 특수성이 강해, 범용 LLM으로는 일관된 품질을 유지하기 어려웠습니다. 따라서 실제 상담 데이터를 기반으로 도메인 특화 파인튜닝을 수행하고, 상담 맥락을 유지하기 위한 맞춤형 메모리 관리 및 토큰 최적화 구조를 설계했습니다.",
+    challenge: "대화형 파인튜닝 데이터 구축 시 발화자 역할 구분이 없었고, 직업 추천 결과가 실제 존재하지 않는 항목으로 생성되는 문제가 있었습니다. 또한 메모리 및 토큰 한계로 인해 대규모 상담 데이터를 처리하는 과정에서 OOM과 RAG 품질 저하 이슈가 빈번하게 발생했습니다.",
+    solution: "발화자는 speaker_idx 규칙을 활용해 user/assistant로 매핑하였고, LoRA 기법으로 Mac 환경에서도 파인튜닝이 가능하도록 했습니다. RAG는 질문 유형별로 조건 분기하여 부적절한 정보 참조를 방지했으며, 벡터화 과정은 batch 처리 및 GPU 활용으로 메모리 부담을 줄였습니다. 또한 직업 추천은 job_list 기반 유효성 검사를 통해 안정성을 확보했습니다.",
+    result: "총 9만 건의 상담 데이터를 활용하여 도메인 특화 모델을 구축하였고, context-aware 구조와 맞춤형 RAG를 통해 실제 사용자에게 신뢰도 높은 응답과 보고서를 제공할 수 있었습니다. 결과적으로 일관된 품질의 상담 흐름, 정확한 추천, 자연스러운 응답 생성이 가능해졌습니다.",
+    ai: {
+      images: ["/project/chatda/ai1.png"],
+      description: "실제 상담 데이터를 기반으로 파인튜닝한 도메인 특화 모델과, 의미 기반 RAG 구조를 결합해 신뢰도 높은 상담 응답과 추천 결과를 생성했습니다.",
+      responsibilities: [
+        "LoRA 기반 GPT 파인튜닝 수행 및 학습 파라미터 최적화",
+        "실제 상담 대화 데이터를 전처리하여 JSONL 형식으로 구조화",
+        "RecursiveCharacterTextSplitter 기반 청크 분할 및 Chroma 벡터 DB 구축",
+        "직업 리스트 기반 추천 결과 검증 및 유사도 매핑 로직 구현"
+      ],
+      tech: ["GPT-4", "polyglot-ko-1.3b", "LoRA", "LangChain", "Chroma", "HuggingFace"],
+      troubleshooting: [
+        {
+          problem: "파인튜닝 중 Out-of-Memory(OOM) 오류로 학습이 자주 중단되었습니다.",
+          solution: "polyglot-ko-5.8B 모델은 Mac 환경에서 실행할 수 없어 1.3B 모델로 교체하고, 전체 파라미터 대신 LoRA 어댑터만 학습했습니다. batch size 1 + gradient accumulation 16으로 메모리 사용을 최소화하여 학습을 안정화시켰습니다.",
+          result: "6GB RAM 환경에서도 학습을 완료할 수 있었고 반복 실험도 가능해졌습니다."
+        },
+        {
+          problem: "RAG 시스템이 무관한 학생 데이터를 참조하여 부적절한 응답을 생성했습니다.",
+          solution: "질문 유형이 정보 탐색일 경우에만 RAG를 사용하고, 검색 결과는 프롬프트 내 명시된 조건에 따라 관련성이 낮으면 무시하도록 설정했습니다.",
+          result: "RAG의 활용도가 개선되어 응답 흐름이 더 자연스럽고 신뢰도 높은 방향으로 유지되었습니다."
+        },
+        {
+          problem: "상담 데이터에 발화자 역할 정보가 없어 파인튜닝 포맷 전환이 어려웠습니다.",
+          solution: "speaker_idx를 기반으로 T-는 assistant, S-는 user로 규칙을 적용해 역할을 추론하고, 시간 순 정렬 및 불완전 메시지 제거를 통해 안정적인 구조를 만들었습니다.",
+          result: "9만 건 이상의 대화를 user-assistant 쌍으로 정확히 변환할 수 있었습니다."
+        },
+        {
+          problem: "LLM에 모든 대화 이력을 전달하면 토큰 초과로 응답 오류가 발생했습니다.",
+          solution: "최근 5개 메시지만 유지하는 context window를 구현하여 핵심 맥락만 모델에 전달하고, 나머지는 분석 용도로 분리했습니다.",
+          result: "응답 속도와 품질이 안정화되었고, 토큰 비용도 절감되었습니다."
+        },
+        {
+          problem: "15만 개 이상의 문서를 벡터화할 때 메모리 초과와 속도 저하가 발생했습니다.",
+          solution: "청크 크기와 오버랩을 조절하고 mps 기반 GPU 처리 및 batch 임베딩을 적용하여 처리 효율을 높였습니다.",
+          result: "벡터 DB 구축 시간이 수십 분으로 단축되었고, 안정적으로 저장되었습니다."
+        },
+        {
+          problem: "직업 추천 결과에 존재하지 않는 직업명이 포함되어 리포트 생성 시 오류가 발생했습니다.",
+          solution: "job_list 내 직업명만 추천되도록 프롬프트를 설계하고, 누락된 경우 가장 유사한 직업으로 자동 매핑하는 로직을 추가했습니다.",
+          result: "모든 추천 결과가 유효한 코드와 연결되어 후속 리포트 생성 및 제출 과정이 안정화되었습니다."
+        }
+      ],
+      growth: [
+        "도메인 특화 데이터로 GPT 모델을 실제 서비스에 적용하는 파인튜닝 전 과정을 경험했습니다.",
+        "메모리 제약, 응답 품질, 토큰 관리 등 다양한 실제 운영 이슈를 직접 해결해보며 현장 중심의 AI 운영 역량을 키웠습니다."
+      ]
+    },
+    categories: ["ai", "backend"]
+  },
+  
+  {
     id: "gangwon-travel",
     title: "모두의 취향을 고려한 강원도 여행 코스 추천 서비스",
     description: "개인과 그룹의 여행 성향을 분석하여 최적화된 강원도 여행 코스를 추천하는 서비스입니다.",
